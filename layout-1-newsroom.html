@@ -119,6 +119,183 @@ nav{height:52px;background:var(--bg);border-bottom:1px solid var(--bd);display:f
 .chat-inp input{flex:1;background:var(--s2);border:1px solid var(--bd);border-radius:8px;padding:9px 12px;color:var(--tx);font-size:13px;outline:none}
 .chat-inp input::placeholder{color:var(--mu)}
 .chat-send{background:var(--blue);border:none;border-radius:8px;padding:8px 14px;color:#fff;font-size:15px;cursor:pointer}
+
+/* ──────────────────────────────────────────────────────────
+   RESPONSIVE BREAKPOINTS — desktop styles above are unchanged
+   ────────────────────────────────────────────────────────── */
+
+/* ── TABLET / iPAD  (≤ 1024px) ── */
+@media (max-width:1024px){
+  /* Allow page to scroll instead of being locked to viewport */
+  body{height:auto;overflow:auto}
+
+  /* Tighten nav padding slightly */
+  .n-logo{padding:0 14px}
+  .n-tab{padding:0 14px}
+  .n-right{padding:0 12px;gap:10px}
+
+  /* Drop the rightmost column (pod + meeting) — keep main + brief */
+  .hero{
+    flex:none;
+    grid-template-columns:1fr 260px;
+    grid-template-rows:auto;
+    min-height:0;
+  }
+  /* h-main spans both row-slots in the 2-col grid */
+  .h-main{grid-row:1/3}
+  /* Hide third column panels (podcast & meeting) */
+  .h-pod{display:none}
+  .h-meet{display:none}
+  /* h-news stacks below h-brief in col 2 */
+
+  /* KPI row — keep 3 cols but shrink values */
+  .kpi-val{font-size:22px}
+
+  /* Ticker — allow wrapping at smaller widths */
+  .ticker{grid-template-columns:repeat(3,1fr)}
+  .ticker>*:nth-child(n+4){display:none}
+
+  /* Chat float — slightly narrower */
+  .chat-float{width:300px}
+}
+
+/* ── MOBILE / SMALL TABLET  (≤ 768px) ── */
+@media (max-width:768px){
+  /* Full-page vertical scroll */
+  body{
+    height:auto;
+    overflow-y:auto;
+    display:flex;
+    flex-direction:column;
+  }
+
+  /* ── Nav: slim down, hide most tabs ── */
+  .n-tabs{overflow:hidden;flex:1;min-width:0}
+  .n-tab{display:none}
+  .n-tab.active{display:flex;padding:0 12px;font-size:12px}
+  .n-right{gap:8px;padding:0 10px;flex-shrink:0}
+  .n-right span{display:none} /* hide date string, keep live dot */
+
+  /* ── Hero: single column stack ── */
+  .hero{
+    flex:none;
+    display:flex;
+    flex-direction:column;
+    height:auto;
+    background:transparent;
+    gap:1px;
+  }
+  /* Every panel: auto height, no clipping */
+  .hero>*{
+    height:auto;
+    min-height:0;
+    overflow:visible;
+    border-bottom:1px solid var(--bd);
+  }
+  /* Restore display for panels hidden at tablet breakpoint */
+  .h-pod{display:block}
+  .h-meet{display:block}
+
+  /* h-main: don't let the flex SVG stretch too tall */
+  .h-main{
+    grid-row:auto;
+    display:flex;
+    flex-direction:column;
+  }
+  .h-main h2{font-size:16px}
+  .h-main svg{flex:none;height:auto;max-height:260px}
+
+  /* KPI: 2 columns */
+  .kpi-row{grid-template-columns:repeat(2,1fr);gap:7px}
+  .kpi-val{font-size:20px}
+  .kpi-lbl{font-size:10.5px}
+  .kpi-delta{font-size:10.5px}
+
+  /* Brief */
+  .h-brief h3{font-size:14px}
+  .pts li{font-size:12px}
+
+  /* Pod */
+  .h-pod h4{font-size:13px}
+
+  /* News */
+  .h-news{padding:16px}
+  .ni p{font-size:12.5px}
+
+  /* Meet */
+  .h-meet{padding:16px}
+
+  /* ── Ticker: horizontal scroll strip ── */
+  .ticker{
+    display:flex;
+    flex-direction:row;
+    overflow-x:auto;
+    -webkit-overflow-scrolling:touch;
+    white-space:nowrap;
+    background:var(--bg);
+    border-top:1px solid var(--bd);
+    flex-shrink:0;
+  }
+  /* Restore hidden ticker items */
+  .ticker>*:nth-child(n+4){display:inline-block}
+  .ticker>*{
+    display:inline-block;
+    white-space:normal;
+    min-width:220px;
+    max-width:260px;
+    padding:10px 12px;
+    border-right:1px solid var(--bd);
+    flex-shrink:0;
+  }
+
+  /* ── Chat float → fixed bottom bar ── */
+  .chat-float{
+    position:fixed;
+    bottom:0;
+    left:0;
+    right:0;
+    width:100%;
+    border-radius:14px 14px 0 0;
+    max-height:50vh;
+    display:flex;
+    flex-direction:column;
+  }
+  .chat-msgs{max-height:160px}
+}
+
+/* ── SMALL MOBILE  (≤ 480px) ── */
+@media (max-width:480px){
+  /* Nav: logo only, no tabs at all */
+  .n-tab.active{display:none}
+  .n-logo{font-size:14px;padding:0 12px}
+
+  /* KPI: 2-col (keep, already set above) */
+  .kpi-val{font-size:18px}
+  .kpi-lbl{font-size:10px}
+
+  /* Slightly smaller body text */
+  .h-brief h3{font-size:13px}
+  .h-brief .lead{font-size:12px}
+  .pts li{font-size:11.5px}
+  .h-pod h4{font-size:12px}
+  .ep{font-size:11px}
+  .ni p{font-size:12px}
+  .ai-item{font-size:11.5px}
+  .meet-time{font-size:12px}
+
+  /* Ticker items a bit narrower */
+  .ticker>*{min-width:180px}
+
+  /* Reduce section padding */
+  .h-main{padding:14px}
+  .h-brief{padding:14px}
+  .h-pod{padding:14px}
+  .h-news{padding:14px}
+  .h-meet{padding:14px}
+
+  /* Chat: give messages a little less height so input stays visible */
+  .chat-msgs{max-height:110px}
+}
 </style>
 </head>
 <body>

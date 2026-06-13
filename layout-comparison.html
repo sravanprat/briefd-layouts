@@ -93,6 +93,28 @@
   a:hover{text-decoration:underline}
 
   .footer{margin-top:48px;font-size:12px;color:#9099b0;border-top:1px solid #e2e6f0;padding-top:20px}
+
+  /* ── Responsive breakpoints ── */
+
+  @media (max-width:768px){
+    .page{padding:32px 24px 60px}
+    .inspo-grid{grid-template-columns:1fr 1fr}
+    .how-row{grid-template-columns:1fr 1fr}
+    /* .lc-grid stays 2-col at tablet — it fits */
+  }
+
+  @media (max-width:600px){
+    .page{padding:24px 16px 48px}
+    h1{font-size:22px}
+    .inspo-grid{grid-template-columns:1fr}
+    .how-row{grid-template-columns:1fr}
+    .lc-grid{grid-template-columns:1fr}
+    .comp-table{display:block;overflow-x:auto;-webkit-overflow-scrolling:touch;white-space:nowrap}
+    .comp-table td,.comp-table th{white-space:normal;min-width:120px}
+    .lc-header{flex-wrap:wrap;gap:8px}
+    .preview-links{flex-wrap:wrap}
+    .rec-box p{font-size:13.5px}
+  }
 </style>
 </head>
 <body>
