@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Layout 3 — Smart Feed</title>
+<style>
+:root{
+  --bg:#0c0f1a;--s1:#111520;--s2:#181d2e;--s3:#1e2438;--bd:#262d42;
+  --tx:#eaf0ff;--mu:#566080;--mu2:#8090b0;
+  --blue:#4f8ef7;--purple:#9d6ef7;--green:#3ec97a;--amber:#f0aa2f;--slate:#7a8da8;--pink:#e879f9;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--tx);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;min-height:100vh;font-feature-settings:'tnum' 1;-webkit-font-smoothing:antialiased}
+
+nav{height:48px;background:var(--s1);border-bottom:1px solid var(--bd);display:flex;align-items:center;padding:0 20px;gap:14px;position:sticky;top:0;z-index:20}
+.n-logo{font-size:15px;font-weight:800;letter-spacing:-.3px;display:flex;align-items:center;gap:6px}
+.n-dot{width:6px;height:6px;border-radius:50%;background:var(--blue)}
+.topic-sel{background:var(--s2);border:1px solid var(--bd);border-radius:6px;padding:5px 13px;font-size:13px;font-weight:600;cursor:pointer;display:flex;align-items:center;gap:6px}
+.arr{color:var(--mu)}
+.n-right{margin-left:auto;display:flex;gap:8px;align-items:center}
+.time-sel{background:var(--s2);border:1px solid var(--bd);border-radius:6px;padding:4px 10px;font-size:12px;cursor:pointer;color:var(--mu2)}
+.n-live{display:flex;align-items:center;gap:5px;font-size:11.5px;color:var(--green);font-weight:600}
+.live-dot{width:5px;height:5px;border-radius:50%;background:var(--green);animation:blink 2s ease-in-out infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
+
+.filter-bar{background:var(--s1);border-bottom:1px solid var(--bd);padding:9px 20px;display:flex;gap:5px;position:sticky;top:48px;z-index:19;align-items:center}
+.pill{padding:5px 14px;border-radius:99px;font-size:12px;font-weight:600;cursor:pointer;border:1px solid var(--bd);background:var(--s2);color:var(--mu2)}
+.pill.active{background:var(--blue);color:#fff;border-color:var(--blue)}
+.pill .ct{font-size:10px;opacity:.7;margin-left:3px}
+.filter-bar .sep{flex:1}
+.sort-lbl{font-size:11.5px;color:var(--mu2)}
+
+/* ── PAGE LAYOUT ── */
+.page-layout{display:grid;grid-template-columns:1fr 268px;max-width:1160px;margin:0 auto;align-items:start}
+
+/* ── FEED ── */
+.feed{padding:20px 20px 80px 20px;display:flex;flex-direction:column;gap:14px;min-width:0}
+
+/* Card base */
+.card{background:var(--s1);border:1px solid var(--bd);border-radius:12px;overflow:hidden;cursor:pointer;transition:border-color .15s}
+.card:hover{border-color:var(--blue)30}
+.accent{height:3px}
+.card-body{padding:20px}
+
+.tag{display:inline-flex;align-items:center;gap:4px;font-size:10.5px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;padding:3px 7px;border-radius:3px;margin-bottom:10px}
+.tb{background:#1a2d4a;color:var(--blue)}.tp{background:#261a42;color:var(--purple)}
+.tn{background:var(--s3);color:var(--slate)}.ti{background:#0e2a1c;color:var(--green)}
+.tm{background:#2d2008;color:var(--amber)}
+
+/* ── BRIEF CARD ── */
+.card.brief .accent{background:linear-gradient(90deg,var(--blue),#7c3aed)}
+.brief h2{font-size:20px;font-weight:800;line-height:1.28;letter-spacing:-.3px;margin-bottom:9px}
+.brief-pts{list-style:none;display:flex;flex-direction:column;gap:6px;margin-bottom:15px}
+.brief-pts li{font-size:13px;color:#8a9ab8;padding-left:16px;position:relative;line-height:1.5}
+.brief-pts li::before{content:'▸';position:absolute;left:0;color:var(--blue);font-size:9px;top:3px}
+
+.exec-flag{background:var(--s2);border:1px solid var(--blue)33;border-radius:7px;padding:10px 14px;margin-bottom:13px;display:flex;gap:10px;align-items:center}
+.flag-icon{font-size:15px;flex-shrink:0}
+.flag-text{font-size:13px;color:#a0b4d0;line-height:1.45}
+.flag-text strong{color:var(--tx)}
+
+.card-foot{display:flex;align-items:center;justify-content:space-between;padding-top:11px;border-top:1px solid var(--bd)}
+.foot-meta{font-size:12px;color:var(--mu2)}
+.foot-acts{display:flex;gap:5px}
+.act{background:var(--s2);border:1px solid var(--bd);border-radius:5px;padding:5px 10px;font-size:11.5px;color:var(--mu2);cursor:pointer}
+.act-primary{background:var(--blue)22;border-color:var(--blue)44;color:var(--blue)}
+
+/* ── PODCAST CARD ── */
+.card.podcast .accent{background:var(--purple)}
+.pod-header{display:flex;gap:14px;align-items:flex-start;margin-bottom:13px}
+.pod-art{width:64px;height:64px;border-radius:9px;background:linear-gradient(135deg,#261a42 0%,#160e28 100%);flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:24px;border:1px solid var(--purple)33}
+.pod-info h3{font-size:16px;font-weight:700;margin-bottom:5px;line-height:1.3;letter-spacing:-.2px}
+.pod-info .ep{font-size:12.5px;color:var(--mu2);margin-bottom:4px}
+.pod-info .dur{font-size:12px;color:var(--purple);font-weight:600}
+.player{background:var(--s2);border-radius:8px;padding:10px 14px;display:flex;align-items:center;gap:10px;margin-bottom:12px}
+.play{width:32px;height:32px;border-radius:50%;background:var(--purple);display:flex;align-items:center;justify-content:center;font-size:9px;cursor:pointer;flex-shrink:0}
+.wave{flex:1;height:20px;background:repeating-linear-gradient(90deg,#9d6ef720 0,#9d6ef720 2px,transparent 2px,transparent 5px);border-radius:2px;position:relative;overflow:hidden}
+.wf{position:absolute;inset:0;width:30%;background:repeating-linear-gradient(90deg,var(--purple) 0,var(--purple) 2px,transparent 2px,transparent 5px)}
+.pt{font-size:11.5px;color:var(--mu2);flex-shrink:0}
+.chapters{display:grid;grid-template-columns:1fr 1fr;gap:5px}
+.ch{display:flex;align-items:flex-start;gap:6px;font-size:12px;color:var(--mu2);line-height:1.35}
+.ch-time{color:var(--purple);font-weight:600;font-size:11px;flex-shrink:0;margin-top:1px}
+
+/* ── INFOGRAPHIC CARD ── */
+.card.infographic .accent{background:linear-gradient(90deg,var(--green),#059669)}
+.infog-kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:16px}
+.i-kpi{background:var(--s2);border:1px solid var(--bd);border-radius:7px;padding:12px 14px;text-align:center}
+.i-kpi-val{font-size:26px;font-weight:800;line-height:1;margin-bottom:5px;letter-spacing:-.5px}
+.i-kpi-lbl{font-size:11px;color:var(--mu2);line-height:1.3}
+.i-kpi-delta{font-size:11px;font-weight:700;margin-top:4px}
+.chart-header{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:9px}
+.chart-ttl{font-size:13px;font-weight:700;color:var(--tx)}
+.chart-src{font-size:10.5px;color:var(--mu)}
+
+/* ── NEWS CARD ── */
+.card.news .accent{background:var(--slate)}
+.news-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.news-item{padding:11px;background:var(--s2);border-radius:8px;border:1px solid var(--bd)}
+.news-item.featured{grid-column:1/-1;display:flex;gap:12px}
+.ni-content h4{font-size:14px;font-weight:700;line-height:1.4;margin-bottom:5px}
+.ni-content p{font-size:13px;color:#8a9ab8;line-height:1.5;margin-bottom:7px}
+.ni-content .ni-meta{display:flex;gap:8px;align-items:center}
+.ni-source{font-size:11px;color:var(--mu2)}
+.ni-badge{font-size:9.5px;padding:2px 6px;border-radius:3px;font-weight:700}
+.b-high{background:#2d0808;color:#f87171}
+.b-med{background:#2d1a08;color:var(--amber)}
+.ni-icon{font-size:26px;flex-shrink:0;display:flex;align-items:center;justify-content:center;width:52px;height:52px;background:var(--s3);border-radius:7px}
+.small-item h5{font-size:13px;font-weight:600;line-height:1.38;margin-bottom:4px}
+.small-item .ni-meta{display:flex;gap:6px;align-items:center}
+
+/* ── MEETING CARD ── */
+.card.meeting .accent{background:linear-gradient(90deg,var(--amber),#d97706)}
+.meet-inner{display:flex;gap:14px;align-items:flex-start}
+.meet-cal{width:56px;height:56px;border-radius:10px;border:2px solid var(--amber)44;background:var(--s2);flex-shrink:0;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.cal-day{font-size:22px;font-weight:800;line-height:1;color:var(--amber)}
+.cal-dow{font-size:8px;text-transform:uppercase;letter-spacing:.06em;color:var(--mu2)}
+.meet-info{flex:1}
+.meet-info h3{font-size:16px;font-weight:700;margin-bottom:5px;letter-spacing:-.2px}
+.meet-info .ms{font-size:12.5px;color:var(--mu2);margin-bottom:11px}
+.meet-body{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.doc-col-lbl{font-size:10.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--mu);margin-bottom:7px}
+.doc{background:var(--s2);border:1px solid var(--bd);border-radius:6px;padding:6px 10px;font-size:12px;display:flex;align-items:center;gap:6px;margin-bottom:4px;color:var(--tx)}
+.action-item{font-size:12px;color:#a0b4c0;padding-left:15px;position:relative;margin-bottom:5px;line-height:1.45}
+.action-item::before{content:'→';position:absolute;left:0;color:var(--amber);font-size:10px}
+
+/* ── RIGHT SIDEBAR ── */
+.right-sidebar{position:sticky;top:95px;height:calc(100vh - 95px);display:flex;flex-direction:column;border-left:1px solid var(--bd);overflow:hidden;background:var(--s1)}
+
+.sb-sec{padding:14px 16px;border-bottom:1px solid var(--bd);flex-shrink:0}
+.sb-lbl{font-size:10.5px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--mu);margin-bottom:10px;display:flex;align-items:center;gap:7px}
+
+.sb-topic{padding:7px 9px;border-radius:6px;font-size:13.5px;font-weight:600;color:var(--mu);cursor:pointer;display:flex;align-items:center;justify-content:space-between;margin-bottom:2px}
+.sb-topic.active{background:var(--s2);color:var(--tx)}
+.sb-topic:hover:not(.active){color:var(--mu2)}
+.sb-ct{font-size:10.5px;background:var(--s3);border-radius:99px;padding:1px 7px;color:var(--mu)}
+.sb-topic.active .sb-ct{background:var(--bd);color:var(--mu2)}
+
+.sb-meet{padding:8px 10px;border-radius:7px;background:var(--s2);border:1px solid var(--bd);margin-bottom:6px;cursor:pointer}
+.sb-meet:last-child{margin-bottom:0}
+.sb-mt{font-size:13.5px;font-weight:600;margin-bottom:2px}
+.sb-ms{font-size:12px;color:var(--mu2)}
+.sb-ms em{color:var(--amber);font-style:normal;font-weight:600}
+.alert{color:#f87171;font-weight:700}
+
+/* Chat in sidebar */
+.sb-chat{flex:1;min-height:0;display:flex;flex-direction:column;overflow:hidden}
+.sb-chat-hd{padding:13px 16px 11px;border-bottom:1px solid var(--bd);flex-shrink:0}
+.sb-msgs{flex:1;min-height:0;overflow-y:auto;padding:13px;display:flex;flex-direction:column;gap:9px;scrollbar-width:thin;scrollbar-color:var(--bd) transparent}
+.msg{max-width:93%;padding:9px 12px;font-size:13px;line-height:1.58;border-radius:10px}
+.msg.user{background:var(--blue);color:#fff;align-self:flex-end;border-radius:10px 10px 2px 10px}
+.msg.ai{background:var(--s2);color:var(--tx);align-self:flex-start;border-radius:10px 10px 10px 2px;border:1px solid var(--bd)}
+.msg.ai strong{color:var(--green)}
+.sb-inp{padding:10px 13px;border-top:1px solid var(--bd);display:flex;gap:6px;flex-shrink:0}
+.sb-inp input{flex:1;background:var(--s2);border:1px solid var(--bd);border-radius:7px;padding:7px 11px;color:var(--tx);font-size:13px;outline:none}
+.sb-inp input::placeholder{color:var(--mu)}
+.sb-send{background:var(--blue);border:none;border-radius:7px;padding:6px 13px;color:#fff;font-size:14px;cursor:pointer}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="n-logo"><div class="n-dot"></div>Briefd</div>
+  <div class="topic-sel">AI Regulation <span class="arr">▾</span></div>
+  <div class="n-right">
+    <div class="n-live"><div class="live-dot"></div>Live</div>
+    <div class="time-sel">Today ▾</div>
+  </div>
+</nav>
+
+<div class="filter-bar">
+  <div class="pill active">All<span class="ct">9</span></div>
+  <div class="pill">Briefs</div>
+  <div class="pill">Podcasts</div>
+  <div class="pill">News</div>
+  <div class="pill">Infographics</div>
+  <div class="pill">Meetings</div>
+  <div class="sep"></div>
+  <span class="sort-lbl">Sorted by relevance</span>
+</div>
+
+<div class="page-layout">
+
+  <!-- FEED -->
+  <div class="feed">
+
+    <!-- 1. BRIEF -->
+    <div class="card brief">
+      <div class="accent"></div>
+      <div class="card-body">
+        <div class="tag tb">📄 Executive Brief</div>
+        <h2>AI Standards Act: Regulatory Readiness Assessment</h2>
+        <div class="exec-flag">
+          <div class="flag-icon">📅</div>
+          <div class="flag-text"><strong>Relevant to Monday's AI Policy Sync.</strong> Models above 7B parameters fall under mandatory audit requirements.</div>
+        </div>
+        <ul class="brief-pts">
+          <li>7B parameter threshold — mandatory NIST-certified audits, $800K–$1.2M/yr cost</li>
+          <li>"High-risk AI" definition still vague — HR screening &amp; credit scoring potentially in scope</li>
+          <li>Senate floor vote within 60 days if Monday's committee passes</li>
+        </ul>
+        <div class="card-foot">
+          <span class="foot-meta">⏱ 5 min · Updated 2h ago · 3 sources</span>
+          <div class="foot-acts">
+            <div class="act">Save</div>
+            <div class="act act-primary">Add to Monday's meeting →</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2. PODCAST -->
+    <div class="card podcast">
+      <div class="accent"></div>
+      <div class="card-body">
+        <div class="tag tp">🎙 Podcast · New Episode</div>
+        <div class="pod-header">
+          <div class="pod-art">🎙</div>
+          <div class="pod-info">
+            <h3>Tech Policy Weekly — Ep. 88: "The Liability Clause That Changes Everything"</h3>
+            <div class="ep">Sen. Wyden on $500M vs $2B cap · Google's abstention decoded</div>
+            <div class="dur">48 min · NPR · Today</div>
+          </div>
+        </div>
+        <div class="player">
+          <div class="play">▶</div>
+          <div class="wave"><div class="wf"></div></div>
+          <span class="pt">14:22 / 48:10</span>
+        </div>
+        <div class="chapters">
+          <div class="ch"><span class="ch-time">14:22</span>The 7B threshold — how it was set</div>
+          <div class="ch"><span class="ch-time">38:10</span>Timeline to floor vote &amp; key swing votes</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3. INFOGRAPHIC -->
+    <div class="card infographic">
+      <div class="accent"></div>
+      <div class="card-body">
+        <div class="tag ti">📊 Infographic · EU AI Act Impact Analysis</div>
+        <div class="infog-kpis">
+          <div class="i-kpi">
+            <div class="i-kpi-val" style="color:var(--green)">€4.2B</div>
+            <div class="i-kpi-lbl">Total EU Compliance Cost by 2026</div>
+            <div class="i-kpi-delta" style="color:var(--amber)">↑ 28% YoY</div>
+          </div>
+          <div class="i-kpi">
+            <div class="i-kpi-val" style="color:var(--blue)">47</div>
+            <div class="i-kpi-lbl">High-Risk AI Categories Defined</div>
+            <div class="i-kpi-delta" style="color:var(--amber)">↑ 12 from draft</div>
+          </div>
+          <div class="i-kpi">
+            <div class="i-kpi-val" style="color:var(--purple)">231</div>
+            <div class="i-kpi-lbl">Days to Full Enforcement</div>
+            <div class="i-kpi-delta" style="color:var(--slate)">Jan 2026 deadline</div>
+          </div>
+        </div>
+        <div class="chart-header">
+          <span class="chart-ttl">Annual compliance spend by sector (€M)</span>
+          <span class="chart-src">Deloitte / EU Parliament, Nov 2024</span>
+        </div>
+        <svg viewBox="0 0 760 204" width="100%" style="display:block">
+          <defs>
+            <linearGradient id="f3G" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#3ec97a"/><stop offset="100%" stop-color="#2aaa64" stop-opacity=".8"/></linearGradient>
+            <linearGradient id="f3B" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#4f8ef7"/><stop offset="100%" stop-color="#3a7ae0" stop-opacity=".8"/></linearGradient>
+            <linearGradient id="f3P" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#e879f9"/><stop offset="100%" stop-color="#cc60e0" stop-opacity=".8"/></linearGradient>
+            <linearGradient id="f3V" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#9d6ef7"/><stop offset="100%" stop-color="#8255e0" stop-opacity=".8"/></linearGradient>
+            <linearGradient id="f3A" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#f0aa2f"/><stop offset="100%" stop-color="#d8922a" stop-opacity=".8"/></linearGradient>
+          </defs>
+          <line x1="148" y1="0" x2="148" y2="184" stroke="#1e2438" stroke-width="1"/>
+          <line x1="233" y1="0" x2="233" y2="184" stroke="#1e2438" stroke-width="1" stroke-dasharray="2,5"/>
+          <line x1="319" y1="0" x2="319" y2="184" stroke="#1e2438" stroke-width="1" stroke-dasharray="2,5"/>
+          <line x1="404" y1="0" x2="404" y2="184" stroke="#1e2438" stroke-width="1" stroke-dasharray="2,5"/>
+          <line x1="490" y1="0" x2="490" y2="184" stroke="#1e2438" stroke-width="1" stroke-dasharray="2,5"/>
+          <line x1="148" y1="184" x2="760" y2="184" stroke="#1e2438" stroke-width="1"/>
+          <text x="148" y="199" text-anchor="middle" fill="#4a5a78" font-size="11" font-family="system-ui">€0</text>
+          <text x="233" y="199" text-anchor="middle" fill="#4a5a78" font-size="11" font-family="system-ui">€200M</text>
+          <text x="319" y="199" text-anchor="middle" fill="#4a5a78" font-size="11" font-family="system-ui">€400M</text>
+          <text x="404" y="199" text-anchor="middle" fill="#4a5a78" font-size="11" font-family="system-ui">€600M</text>
+          <text x="490" y="199" text-anchor="middle" fill="#4a5a78" font-size="11" font-family="system-ui">€800M</text>
+          <text x="143" y="23" text-anchor="end" fill="#8090b0" font-size="12.5" font-family="system-ui">Healthcare AI</text>
+          <rect x="148" y="8" width="350" height="23" rx="3" fill="url(#f3G)"/>
+          <line x1="149" y1="9" x2="498" y2="9" stroke="rgba(255,255,255,.14)" stroke-width="1.5"/>
+          <text x="504" y="24" fill="#3ec97a" font-size="13" font-weight="700" font-family="system-ui">€820M</text>
+          <text x="590" y="24" fill="#3a7a50" font-size="11.5" font-family="system-ui">↑ 34% YoY</text>
+          <text x="143" y="58" text-anchor="end" fill="#8090b0" font-size="12.5" font-family="system-ui">Financial Svcs</text>
+          <rect x="148" y="43" width="273" height="23" rx="3" fill="url(#f3B)"/>
+          <line x1="149" y1="44" x2="421" y2="44" stroke="rgba(255,255,255,.14)" stroke-width="1.5"/>
+          <text x="427" y="59" fill="#4f8ef7" font-size="13" font-weight="700" font-family="system-ui">€640M</text>
+          <text x="590" y="59" fill="#3a5ea0" font-size="11.5" font-family="system-ui">↑ 29% YoY</text>
+          <text x="143" y="93" text-anchor="end" fill="#8090b0" font-size="12.5" font-family="system-ui">Other Sectors</text>
+          <rect x="148" y="78" width="235" height="23" rx="3" fill="url(#f3P)"/>
+          <line x1="149" y1="79" x2="383" y2="79" stroke="rgba(255,255,255,.14)" stroke-width="1.5"/>
+          <text x="389" y="94" fill="#e879f9" font-size="13" font-weight="700" font-family="system-ui">€550M</text>
+          <text x="590" y="94" fill="#8a4a94" font-size="11.5" font-family="system-ui">↑ 18% YoY</text>
+          <text x="143" y="128" text-anchor="end" fill="#8090b0" font-size="12.5" font-family="system-ui">Transportation</text>
+          <rect x="148" y="113" width="222" height="23" rx="3" fill="url(#f3V)"/>
+          <line x1="149" y1="114" x2="370" y2="114" stroke="rgba(255,255,255,.14)" stroke-width="1.5"/>
+          <text x="376" y="129" fill="#9d6ef7" font-size="13" font-weight="700" font-family="system-ui">€520M</text>
+          <text x="590" y="129" fill="#6a48b8" font-size="11.5" font-family="system-ui">↑ 41% YoY · fastest</text>
+          <text x="143" y="163" text-anchor="end" fill="#8090b0" font-size="12.5" font-family="system-ui">Manufacturing</text>
+          <rect x="148" y="148" width="162" height="23" rx="3" fill="url(#f3A)"/>
+          <line x1="149" y1="149" x2="310" y2="149" stroke="rgba(255,255,255,.14)" stroke-width="1.5"/>
+          <text x="316" y="164" fill="#f0aa2f" font-size="13" font-weight="700" font-family="system-ui">€380M</text>
+          <text x="590" y="164" fill="#9a6a20" font-size="11.5" font-family="system-ui">↑ 22% YoY</text>
+        </svg>
+      </div>
+    </div>
+
+    <!-- 4. NEWS GRID -->
+    <div class="card news">
+      <div class="accent"></div>
+      <div class="card-body">
+        <div class="tag tn">📰 Latest News · AI Regulation</div>
+        <div class="news-grid">
+          <div class="news-item featured">
+            <div class="ni-icon">🔍</div>
+            <div class="ni-content">
+              <h4>FTC reviewing GPT-4o training data practices — inquiry underway</h4>
+              <p>May affect AI Standards Act model registry timeline.</p>
+              <div class="ni-meta"><span class="ni-source">Reuters · 2h ago</span><span class="ni-badge b-high">Relevant</span></div>
+            </div>
+          </div>
+          <div class="news-item small-item">
+            <h5>China issues draft rules restricting AI model exports above 100B parameters</h5>
+            <div class="ni-meta"><span class="ni-source">FT · 4h ago</span><span class="ni-badge b-high">HIGH</span></div>
+          </div>
+          <div class="news-item small-item">
+            <h5>UK AI Safety Institute doubles headcount to 120 ahead of G7 follow-up</h5>
+            <div class="ni-meta"><span class="ni-source">BBC · 6h ago</span><span class="ni-badge b-med">Watch</span></div>
+          </div>
+          <div class="news-item small-item">
+            <h5>Meta's Llama 4 crosses EU high-risk threshold — mandatory audit required</h5>
+            <div class="ni-meta"><span class="ni-source">Wired · 1h ago</span><span class="ni-badge b-high">HIGH</span></div>
+          </div>
+          <div class="news-item small-item">
+            <h5>NIST releases draft AI audit framework — 90-day comment period opens</h5>
+            <div class="ni-meta"><span class="ni-source">NIST.gov · 8h ago</span><span class="ni-badge b-med">Review</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 5. MEETING PREP -->
+    <div class="card meeting">
+      <div class="accent"></div>
+      <div class="card-body">
+        <div class="tag tm">📋 Meeting Prep</div>
+        <div class="meet-inner">
+          <div class="meet-cal">
+            <div class="cal-dow">Mon</div>
+            <div class="cal-day">16</div>
+            <div class="cal-dow">Jun</div>
+          </div>
+          <div class="meet-info">
+            <h3>AI Policy Sync — AI Standards Act Response</h3>
+            <div class="ms">9:00 AM · 45 min · General Counsel · CTO · Head of Compliance</div>
+            <div class="meet-body">
+              <div class="doc-col">
+                <div class="doc-col-lbl">Materials</div>
+                <div class="doc">📑 Agenda (3 items)</div>
+                <div class="doc">🖥 Board Deck — 8 slides</div>
+                <div class="doc">⚖️ Legal Memo — exposure</div>
+                <div class="doc">📄 This Brief as Pre-read</div>
+              </div>
+              <div class="actions-col">
+                <div class="doc-col-lbl">Pre-meeting Actions</div>
+                <div class="action-item">Audit parameter counts on all production models</div>
+                <div class="action-item">Budget $800K–$1.2M for NIST Q4</div>
+                <div class="action-item">Engage counsel on HR tool classification</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /feed -->
+
+  <!-- RIGHT SIDEBAR -->
+  <div class="right-sidebar">
+
+    <div class="sb-sec">
+      <div class="sb-lbl">Topics</div>
+      <div class="sb-topic active">AI Regulation <span class="sb-ct">9</span></div>
+      <div class="sb-topic">US Economy <span class="sb-ct">6</span></div>
+      <div class="sb-topic">AI &amp; Markets <span class="sb-ct">7</span></div>
+      <div class="sb-topic">Climate &amp; ESG <span class="sb-ct">4</span></div>
+      <div class="sb-topic">Cybersecurity <span class="sb-ct">3</span></div>
+    </div>
+
+    <div class="sb-sec">
+      <div class="sb-lbl">Upcoming Meetings</div>
+      <div class="sb-meet">
+        <div class="sb-mt">AI Policy Sync</div>
+        <div class="sb-ms"><em>Mon 9:00 AM</em> · <span style="color:var(--amber);font-weight:600">Pre-read requested</span></div>
+      </div>
+      <div class="sb-meet">
+        <div class="sb-mt">Board Briefing — AI Risk</div>
+        <div class="sb-ms"><em>Tue 2:30 PM</em> · 8 slides due</div>
+      </div>
+      <div class="sb-meet">
+        <div class="sb-mt">Reg Compliance Review</div>
+        <div class="sb-ms"><em>Wed 11:00 AM</em> · Legal &amp; CTO</div>
+      </div>
+    </div>
+
+    <div class="sb-chat">
+      <div class="sb-chat-hd">
+        <div class="sb-lbl">Ask Briefd <div class="live-dot"></div></div>
+      </div>
+      <div class="sb-msgs">
+        <div class="msg user">What's our regulatory position if this passes?</div>
+        <div class="msg ai">Models above 7B params enter the mandatory audit tier — <strong>est. $2.8M–$4.1M/yr.</strong> HR screening tools may qualify under "high-risk AI" definitions.</div>
+        <div class="msg user">What do I tell the board Tuesday?</div>
+        <div class="msg ai"><strong>Three priorities:</strong> Audit param counts this week · Plan $800K–$1.2M for NIST Q4 · Engage counsel on HR tool classification.</div>
+      </div>
+      <div class="sb-inp">
+        <input placeholder="Ask about AI regulation…">
+        <button class="sb-send">↑</button>
+      </div>
+    </div>
+
+  </div><!-- /right-sidebar -->
+
+</div><!-- /page-layout -->
+
+</body>
+</html>
