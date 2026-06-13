@@ -8,7 +8,7 @@
 :root{
   --bg:#0c0f1a;--s1:#111520;--s2:#181d2e;--s3:#1e2438;--bd:#262d42;
   --tx:#eaf0ff;--mu:#566080;--mu2:#8090b0;
-  --blue:#4f8ef7;--purple:#9d6ef7;--green:#3ec97a;--amber:#f0aa2f;--slate:#7a8da8;--pink:#e879f9;
+  --blue:#4f8ef7;--purple:#4f8ef7;--green:#6b85b0;--amber:#8090a8;--slate:#7a8da8;--pink:#4f8ef7;
 }
 *{box-sizing:border-box;margin:0;padding:0}
 body{background:var(--bg);color:var(--tx);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;min-height:100vh;font-feature-settings:'tnum' 1;-webkit-font-smoothing:antialiased}
@@ -20,8 +20,8 @@ nav{height:48px;background:var(--s1);border-bottom:1px solid var(--bd);display:f
 .arr{color:var(--mu)}
 .n-right{margin-left:auto;display:flex;gap:8px;align-items:center}
 .time-sel{background:var(--s2);border:1px solid var(--bd);border-radius:6px;padding:4px 10px;font-size:12px;cursor:pointer;color:var(--mu2)}
-.n-live{display:flex;align-items:center;gap:5px;font-size:11.5px;color:var(--green);font-weight:600}
-.live-dot{width:5px;height:5px;border-radius:50%;background:var(--green);animation:blink 2s ease-in-out infinite}
+.n-live{display:flex;align-items:center;gap:5px;font-size:11.5px;color:var(--blue);font-weight:600}
+.live-dot{width:5px;height:5px;border-radius:50%;background:var(--blue);animation:blink 2s ease-in-out infinite}
 @keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
 
 .filter-bar{background:var(--s1);border-bottom:1px solid var(--bd);padding:9px 20px;display:flex;gap:5px;position:sticky;top:48px;z-index:19;align-items:center}
@@ -44,12 +44,12 @@ nav{height:48px;background:var(--s1);border-bottom:1px solid var(--bd);display:f
 .card-body{padding:20px}
 
 .tag{display:inline-flex;align-items:center;gap:4px;font-size:10.5px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;padding:3px 7px;border-radius:3px;margin-bottom:10px}
-.tb{background:#1a2d4a;color:var(--blue)}.tp{background:#261a42;color:var(--purple)}
-.tn{background:var(--s3);color:var(--slate)}.ti{background:#0e2a1c;color:var(--green)}
-.tm{background:#2d2008;color:var(--amber)}
+.tb{background:#1a2d4a;color:var(--blue)}.tp{background:var(--s3);color:var(--mu2)}
+.tn{background:var(--s3);color:var(--mu2)}.ti{background:var(--s3);color:var(--mu2)}
+.tm{background:var(--s3);color:var(--mu2)}
 
 /* ── BRIEF CARD ── */
-.card.brief .accent{background:linear-gradient(90deg,var(--blue),#7c3aed)}
+.card.brief .accent{background:linear-gradient(90deg,var(--blue),#2a4a7a)}
 .brief h2{font-size:20px;font-weight:800;line-height:1.28;letter-spacing:-.3px;margin-bottom:9px}
 .brief-pts{list-style:none;display:flex;flex-direction:column;gap:6px;margin-bottom:15px}
 .brief-pts li{font-size:13px;color:#8a9ab8;padding-left:16px;position:relative;line-height:1.5}
@@ -69,13 +69,13 @@ nav{height:48px;background:var(--s1);border-bottom:1px solid var(--bd);display:f
 /* ── PODCAST CARD ── */
 .card.podcast .accent{background:var(--purple)}
 .pod-header{display:flex;gap:14px;align-items:flex-start;margin-bottom:13px}
-.pod-art{width:64px;height:64px;border-radius:9px;background:linear-gradient(135deg,#261a42 0%,#160e28 100%);flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:24px;border:1px solid var(--purple)33}
+.pod-art{width:64px;height:64px;border-radius:9px;background:linear-gradient(135deg,#162040 0%,#0e1828 100%);flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:24px;border:1px solid var(--blue)33}
 .pod-info h3{font-size:16px;font-weight:700;margin-bottom:5px;line-height:1.3;letter-spacing:-.2px}
 .pod-info .ep{font-size:12.5px;color:var(--mu2);margin-bottom:4px}
 .pod-info .dur{font-size:12px;color:var(--purple);font-weight:600}
 .player{background:var(--s2);border-radius:8px;padding:10px 14px;display:flex;align-items:center;gap:10px;margin-bottom:12px}
 .play{width:32px;height:32px;border-radius:50%;background:var(--purple);display:flex;align-items:center;justify-content:center;font-size:9px;cursor:pointer;flex-shrink:0}
-.wave{flex:1;height:20px;background:repeating-linear-gradient(90deg,#9d6ef720 0,#9d6ef720 2px,transparent 2px,transparent 5px);border-radius:2px;position:relative;overflow:hidden}
+.wave{flex:1;height:20px;background:repeating-linear-gradient(90deg,#4f8ef720 0,#4f8ef720 2px,transparent 2px,transparent 5px);border-radius:2px;position:relative;overflow:hidden}
 .wf{position:absolute;inset:0;width:30%;background:repeating-linear-gradient(90deg,var(--purple) 0,var(--purple) 2px,transparent 2px,transparent 5px)}
 .pt{font-size:11.5px;color:var(--mu2);flex-shrink:0}
 .chapters{display:grid;grid-template-columns:1fr 1fr;gap:5px}
@@ -83,7 +83,7 @@ nav{height:48px;background:var(--s1);border-bottom:1px solid var(--bd);display:f
 .ch-time{color:var(--purple);font-weight:600;font-size:11px;flex-shrink:0;margin-top:1px}
 
 /* ── INFOGRAPHIC CARD ── */
-.card.infographic .accent{background:linear-gradient(90deg,var(--green),#059669)}
+.card.infographic .accent{background:linear-gradient(90deg,var(--blue),#2a4a7a)}
 .infog-kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:16px}
 .i-kpi{background:var(--s2);border:1px solid var(--bd);border-radius:7px;padding:12px 14px;text-align:center}
 .i-kpi-val{font-size:26px;font-weight:800;line-height:1;margin-bottom:5px;letter-spacing:-.5px}
@@ -103,14 +103,14 @@ nav{height:48px;background:var(--s1);border-bottom:1px solid var(--bd);display:f
 .ni-content .ni-meta{display:flex;gap:8px;align-items:center}
 .ni-source{font-size:11px;color:var(--mu2)}
 .ni-badge{font-size:9.5px;padding:2px 6px;border-radius:3px;font-weight:700}
-.b-high{background:#2d0808;color:#f87171}
-.b-med{background:#2d1a08;color:var(--amber)}
+.b-high{background:var(--s3);color:var(--mu2)}
+.b-med{background:var(--s3);color:var(--mu2)}
 .ni-icon{font-size:26px;flex-shrink:0;display:flex;align-items:center;justify-content:center;width:52px;height:52px;background:var(--s3);border-radius:7px}
 .small-item h5{font-size:13px;font-weight:600;line-height:1.38;margin-bottom:4px}
 .small-item .ni-meta{display:flex;gap:6px;align-items:center}
 
 /* ── MEETING CARD ── */
-.card.meeting .accent{background:linear-gradient(90deg,var(--amber),#d97706)}
+.card.meeting .accent{background:linear-gradient(90deg,var(--slate),#2a4a7a)}
 .meet-inner{display:flex;gap:14px;align-items:flex-start}
 .meet-cal{width:56px;height:56px;border-radius:10px;border:2px solid var(--amber)44;background:var(--s2);flex-shrink:0;display:flex;flex-direction:column;align-items:center;justify-content:center}
 .cal-day{font-size:22px;font-weight:800;line-height:1;color:var(--amber)}
@@ -141,7 +141,7 @@ nav{height:48px;background:var(--s1);border-bottom:1px solid var(--bd);display:f
 .sb-mt{font-size:13.5px;font-weight:600;margin-bottom:2px}
 .sb-ms{font-size:12px;color:var(--mu2)}
 .sb-ms em{color:var(--amber);font-style:normal;font-weight:600}
-.alert{color:#f87171;font-weight:700}
+.alert{color:var(--mu2);font-weight:700}
 
 /* Chat in sidebar */
 .sb-chat{flex:1;min-height:0;display:flex;flex-direction:column;overflow:hidden}
@@ -150,7 +150,7 @@ nav{height:48px;background:var(--s1);border-bottom:1px solid var(--bd);display:f
 .msg{max-width:93%;padding:9px 12px;font-size:13px;line-height:1.58;border-radius:10px}
 .msg.user{background:var(--blue);color:#fff;align-self:flex-end;border-radius:10px 10px 2px 10px}
 .msg.ai{background:var(--s2);color:var(--tx);align-self:flex-start;border-radius:10px 10px 10px 2px;border:1px solid var(--bd)}
-.msg.ai strong{color:var(--green)}
+.msg.ai strong{color:var(--blue)}
 .sb-inp{padding:10px 13px;border-top:1px solid var(--bd);display:flex;gap:6px;flex-shrink:0}
 .sb-inp input{flex:1;background:var(--s2);border:1px solid var(--bd);border-radius:7px;padding:7px 11px;color:var(--tx);font-size:13px;outline:none}
 .sb-inp input::placeholder{color:var(--mu)}
@@ -243,12 +243,12 @@ nav{height:48px;background:var(--s1);border-bottom:1px solid var(--bd);display:f
           <div class="i-kpi">
             <div class="i-kpi-val" style="color:var(--green)">€4.2B</div>
             <div class="i-kpi-lbl">Total EU Compliance Cost by 2026</div>
-            <div class="i-kpi-delta" style="color:var(--amber)">↑ 28% YoY</div>
+            <div class="i-kpi-delta" style="color:var(--mu2)">↑ 28% YoY</div>
           </div>
           <div class="i-kpi">
             <div class="i-kpi-val" style="color:var(--blue)">47</div>
             <div class="i-kpi-lbl">High-Risk AI Categories Defined</div>
-            <div class="i-kpi-delta" style="color:var(--amber)">↑ 12 from draft</div>
+            <div class="i-kpi-delta" style="color:var(--mu2)">↑ 12 from draft</div>
           </div>
           <div class="i-kpi">
             <div class="i-kpi-val" style="color:var(--purple)">231</div>
@@ -262,11 +262,11 @@ nav{height:48px;background:var(--s1);border-bottom:1px solid var(--bd);display:f
         </div>
         <svg viewBox="0 0 760 204" width="100%" style="display:block">
           <defs>
-            <linearGradient id="f3G" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#3ec97a"/><stop offset="100%" stop-color="#2aaa64" stop-opacity=".8"/></linearGradient>
-            <linearGradient id="f3B" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#4f8ef7"/><stop offset="100%" stop-color="#3a7ae0" stop-opacity=".8"/></linearGradient>
-            <linearGradient id="f3P" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#e879f9"/><stop offset="100%" stop-color="#cc60e0" stop-opacity=".8"/></linearGradient>
-            <linearGradient id="f3V" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#9d6ef7"/><stop offset="100%" stop-color="#8255e0" stop-opacity=".8"/></linearGradient>
-            <linearGradient id="f3A" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#f0aa2f"/><stop offset="100%" stop-color="#d8922a" stop-opacity=".8"/></linearGradient>
+            <linearGradient id="f3G" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#4f8ef7"/><stop offset="100%" stop-color="#2a4a7a" stop-opacity=".8"/></linearGradient>
+            <linearGradient id="f3B" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#4f8ef7"/><stop offset="100%" stop-color="#2a4a7a" stop-opacity=".8"/></linearGradient>
+            <linearGradient id="f3P" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#3a6abf"/><stop offset="100%" stop-color="#2a4a7a" stop-opacity=".8"/></linearGradient>
+            <linearGradient id="f3V" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#2e5899"/><stop offset="100%" stop-color="#1e3a6a" stop-opacity=".8"/></linearGradient>
+            <linearGradient id="f3A" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#4a6a90"/><stop offset="100%" stop-color="#2a4a7a" stop-opacity=".8"/></linearGradient>
           </defs>
           <line x1="148" y1="0" x2="148" y2="184" stroke="#1e2438" stroke-width="1"/>
           <line x1="233" y1="0" x2="233" y2="184" stroke="#1e2438" stroke-width="1" stroke-dasharray="2,5"/>
@@ -282,28 +282,28 @@ nav{height:48px;background:var(--s1);border-bottom:1px solid var(--bd);display:f
           <text x="143" y="23" text-anchor="end" fill="#8090b0" font-size="12.5" font-family="system-ui">Healthcare AI</text>
           <rect x="148" y="8" width="350" height="23" rx="3" fill="url(#f3G)"/>
           <line x1="149" y1="9" x2="498" y2="9" stroke="rgba(255,255,255,.14)" stroke-width="1.5"/>
-          <text x="504" y="24" fill="#3ec97a" font-size="13" font-weight="700" font-family="system-ui">€820M</text>
-          <text x="590" y="24" fill="#3a7a50" font-size="11.5" font-family="system-ui">↑ 34% YoY</text>
+          <text x="504" y="24" fill="#4f8ef7" font-size="13" font-weight="700" font-family="system-ui">€820M</text>
+          <text x="590" y="24" fill="#8090a8" font-size="11.5" font-family="system-ui">↑ 34% YoY</text>
           <text x="143" y="58" text-anchor="end" fill="#8090b0" font-size="12.5" font-family="system-ui">Financial Svcs</text>
           <rect x="148" y="43" width="273" height="23" rx="3" fill="url(#f3B)"/>
           <line x1="149" y1="44" x2="421" y2="44" stroke="rgba(255,255,255,.14)" stroke-width="1.5"/>
           <text x="427" y="59" fill="#4f8ef7" font-size="13" font-weight="700" font-family="system-ui">€640M</text>
-          <text x="590" y="59" fill="#3a5ea0" font-size="11.5" font-family="system-ui">↑ 29% YoY</text>
+          <text x="590" y="59" fill="#8090a8" font-size="11.5" font-family="system-ui">↑ 29% YoY</text>
           <text x="143" y="93" text-anchor="end" fill="#8090b0" font-size="12.5" font-family="system-ui">Other Sectors</text>
           <rect x="148" y="78" width="235" height="23" rx="3" fill="url(#f3P)"/>
           <line x1="149" y1="79" x2="383" y2="79" stroke="rgba(255,255,255,.14)" stroke-width="1.5"/>
-          <text x="389" y="94" fill="#e879f9" font-size="13" font-weight="700" font-family="system-ui">€550M</text>
-          <text x="590" y="94" fill="#8a4a94" font-size="11.5" font-family="system-ui">↑ 18% YoY</text>
+          <text x="389" y="94" fill="#4f8ef7" font-size="13" font-weight="700" font-family="system-ui">€550M</text>
+          <text x="590" y="94" fill="#8090a8" font-size="11.5" font-family="system-ui">↑ 18% YoY</text>
           <text x="143" y="128" text-anchor="end" fill="#8090b0" font-size="12.5" font-family="system-ui">Transportation</text>
           <rect x="148" y="113" width="222" height="23" rx="3" fill="url(#f3V)"/>
           <line x1="149" y1="114" x2="370" y2="114" stroke="rgba(255,255,255,.14)" stroke-width="1.5"/>
-          <text x="376" y="129" fill="#9d6ef7" font-size="13" font-weight="700" font-family="system-ui">€520M</text>
-          <text x="590" y="129" fill="#6a48b8" font-size="11.5" font-family="system-ui">↑ 41% YoY · fastest</text>
+          <text x="376" y="129" fill="#4f8ef7" font-size="13" font-weight="700" font-family="system-ui">€520M</text>
+          <text x="590" y="129" fill="#8090a8" font-size="11.5" font-family="system-ui">↑ 41% YoY · fastest</text>
           <text x="143" y="163" text-anchor="end" fill="#8090b0" font-size="12.5" font-family="system-ui">Manufacturing</text>
           <rect x="148" y="148" width="162" height="23" rx="3" fill="url(#f3A)"/>
           <line x1="149" y1="149" x2="310" y2="149" stroke="rgba(255,255,255,.14)" stroke-width="1.5"/>
-          <text x="316" y="164" fill="#f0aa2f" font-size="13" font-weight="700" font-family="system-ui">€380M</text>
-          <text x="590" y="164" fill="#9a6a20" font-size="11.5" font-family="system-ui">↑ 22% YoY</text>
+          <text x="316" y="164" fill="#4f8ef7" font-size="13" font-weight="700" font-family="system-ui">€380M</text>
+          <text x="590" y="164" fill="#8090a8" font-size="11.5" font-family="system-ui">↑ 22% YoY</text>
         </svg>
       </div>
     </div>

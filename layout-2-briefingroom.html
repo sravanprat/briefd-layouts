@@ -8,7 +8,7 @@
 :root{
   --bg:#0c0f1a;--s1:#111520;--s2:#181d2e;--s3:#1e2438;--bd:#262d42;
   --tx:#eaf0ff;--mu:#566080;--mu2:#8090b0;
-  --blue:#4f8ef7;--purple:#9d6ef7;--green:#3ec97a;--amber:#f0aa2f;--slate:#7a8da8;--pink:#e879f9;
+  --blue:#4f8ef7;--purple:#4f8ef7;--green:#6b85b0;--amber:#8090a8;--slate:#7a8da8;--pink:#4f8ef7;
 }
 *{box-sizing:border-box;margin:0;padding:0}
 body{background:var(--bg);color:var(--tx);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;height:100vh;display:grid;grid-template-rows:48px 1fr;overflow:hidden;font-feature-settings:'tnum' 1;-webkit-font-smoothing:antialiased}
@@ -19,16 +19,16 @@ nav{background:var(--s1);border-bottom:1px solid var(--bd);display:flex;align-it
 .n-slash{color:var(--mu);margin:0 2px}
 .n-ctx{font-size:13px;font-weight:600;color:var(--blue)}
 .n-badge{margin-left:auto;background:var(--s2);border:1px solid var(--bd);border-radius:6px;padding:3px 10px;font-size:11px;color:var(--mu2)}
-.n-live{display:flex;align-items:center;gap:5px;font-size:11px;color:var(--green);font-weight:600;margin-left:12px}
-.live-dot{width:5px;height:5px;border-radius:50%;background:var(--green);animation:blink 2s ease-in-out infinite}
+.n-live{display:flex;align-items:center;gap:5px;font-size:11px;color:var(--blue);font-weight:600;margin-left:12px}
+.live-dot{width:5px;height:5px;border-radius:50%;background:var(--blue);animation:blink 2s ease-in-out infinite}
 @keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
 
 .layout{display:grid;grid-template-columns:220px 1fr 320px;overflow:hidden}
 
 .tag{display:inline-flex;align-items:center;gap:4px;font-size:11px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;padding:3px 8px;border-radius:3px;margin-bottom:9px}
-.tb{background:#1a2d4a;color:var(--blue)}.tp{background:#261a42;color:var(--purple)}
-.tn{background:var(--s3);color:var(--slate)}.ti{background:#0e2a1c;color:var(--green)}
-.tm{background:#2d2008;color:var(--amber)}.tc{background:#0e1e40;color:var(--blue)}
+.tb{background:#1a2d4a;color:var(--blue)}.tp{background:#1a2d4a;color:var(--blue)}
+.tn{background:var(--s3);color:var(--slate)}.ti{background:#1a2438;color:var(--slate)}
+.tm{background:#1a2438;color:var(--mu2)}.tc{background:#0e1e40;color:var(--blue)}
 
 /* ── LEFT SIDEBAR ── */
 .sidebar{border-right:1px solid var(--bd);background:var(--s1);display:flex;flex-direction:column;overflow:hidden}
@@ -39,11 +39,11 @@ nav{background:var(--s1);border-bottom:1px solid var(--bd);display:flex;align-it
 .dot{width:7px;height:7px;border-radius:50%;flex-shrink:0}
 .topic-count{margin-left:auto;font-size:11px;background:var(--s3);border-radius:99px;padding:2px 7px;color:var(--mu)}
 .meet-block{padding:9px 11px;border-radius:6px;background:var(--s2);border:1px solid var(--bd);margin-bottom:6px;cursor:pointer}
-.meet-block:hover{border-color:var(--amber)44}
+.meet-block:hover{border-color:var(--blue)44}
 .meet-block .mt{font-size:14px;font-weight:600;margin-bottom:3px}
 .meet-block .ms{font-size:12px;color:var(--mu2);line-height:1.45}
-.meet-block .ms em{color:var(--amber);font-style:normal;font-weight:600}
-.meet-block .ms .alert{color:#f87171;font-size:11px;font-weight:700}
+.meet-block .ms em{color:var(--blue);font-style:normal;font-weight:600}
+.meet-block .ms .alert{color:var(--mu2);font-size:11px;font-weight:700}
 
 /* ── MAIN BRIEF ── */
 .main{overflow-y:auto;padding:30px 38px;scrollbar-width:thin;scrollbar-color:var(--bd) transparent}
@@ -67,12 +67,12 @@ nav{background:var(--s1);border-bottom:1px solid var(--bd);display:flex;align-it
 .kp-list li{font-size:15px;color:var(--tx);padding-left:18px;position:relative;line-height:1.52}
 .kp-list li::before{content:'▸';position:absolute;left:0;color:var(--blue);font-size:10px;top:3px}
 
-.action-box{background:#0e2008;border:1px solid var(--green)44;border-radius:8px;padding:17px 20px;margin:18px 0}
-.ab-lbl{font-size:11px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--green);margin-bottom:10px}
+.action-box{background:#0e1428;border:1px solid var(--blue)44;border-radius:8px;padding:17px 20px;margin:18px 0}
+.ab-lbl{font-size:11px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--blue);margin-bottom:10px}
 .ab-list{list-style:none;display:flex;flex-direction:column;gap:8px}
-.ab-list li{font-size:14.5px;color:#a0c8a0;padding-left:20px;position:relative;line-height:1.5}
-.ab-list li::before{content:'→';position:absolute;left:0;color:var(--green);font-size:11px}
-.ab-list li strong{color:var(--green)}
+.ab-list li{font-size:14.5px;color:#8090b0;padding-left:20px;position:relative;line-height:1.5}
+.ab-list li::before{content:'→';position:absolute;left:0;color:var(--blue);font-size:11px}
+.ab-list li strong{color:var(--blue)}
 
 .fact-row{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:20px 0}
 .fact{background:var(--s2);border:1px solid var(--bd);border-radius:8px;padding:12px 14px;text-align:center}
@@ -86,15 +86,15 @@ nav{background:var(--s1);border-bottom:1px solid var(--bd);display:flex;align-it
 .companion{border-left:1px solid var(--bd);display:flex;flex-direction:column;overflow:hidden}
 .c-block{padding:15px 17px;border-bottom:1px solid var(--bd);flex-shrink:0}
 .c-lbl{font-size:11px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;margin-bottom:11px}
-.cl-p{color:var(--purple)}.cl-i{color:var(--green)}.cl-n{color:var(--slate)}.cl-m{color:var(--amber)}.cl-c{color:var(--blue)}.cl-t{color:var(--blue)}
+.cl-p{color:var(--mu2)}.cl-i{color:var(--mu2)}.cl-n{color:var(--mu2)}.cl-m{color:var(--mu2)}.cl-c{color:var(--mu2)}.cl-t{color:var(--mu2)}
 
 /* Podcast */
 .pod-title{font-size:15px;font-weight:700;margin-bottom:4px;line-height:1.3}
 .pod-ep{font-size:12.5px;color:var(--mu2);margin-bottom:10px;line-height:1.5}
 .player{background:var(--s2);border-radius:7px;padding:9px 12px;display:flex;align-items:center;gap:9px}
-.play{width:29px;height:29px;border-radius:50%;background:var(--purple);display:flex;align-items:center;justify-content:center;font-size:9px;cursor:pointer;flex-shrink:0}
-.wave{flex:1;height:18px;background:repeating-linear-gradient(90deg,#9d6ef720 0,#9d6ef720 2px,transparent 2px,transparent 5px);border-radius:2px;position:relative;overflow:hidden}
-.wf{position:absolute;inset:0;width:30%;background:repeating-linear-gradient(90deg,var(--purple) 0,var(--purple) 2px,transparent 2px,transparent 5px)}
+.play{width:29px;height:29px;border-radius:50%;background:var(--blue);display:flex;align-items:center;justify-content:center;font-size:9px;cursor:pointer;flex-shrink:0}
+.wave{flex:1;height:18px;background:repeating-linear-gradient(90deg,#4f8ef720 0,#4f8ef720 2px,transparent 2px,transparent 5px);border-radius:2px;position:relative;overflow:hidden}
+.wf{position:absolute;inset:0;width:30%;background:repeating-linear-gradient(90deg,var(--blue) 0,var(--blue) 2px,transparent 2px,transparent 5px)}
 .pt{font-size:12px;color:var(--mu2);flex-shrink:0}
 
 /* Compact KPI tiles for companion */
@@ -107,7 +107,7 @@ nav{background:var(--s1);border-bottom:1px solid var(--bd);display:flex;align-it
 /* Podcast chapters in companion */
 .chapters{display:flex;flex-direction:column;gap:5px;margin-top:9px}
 .ch{display:flex;align-items:flex-start;gap:7px;font-size:12px;color:var(--mu2);line-height:1.35}
-.ch-time{color:var(--purple);font-weight:600;font-size:11px;flex-shrink:0;margin-top:1px}
+.ch-time{color:var(--blue);font-weight:600;font-size:11px;flex-shrink:0;margin-top:1px}
 
 /* Charts */
 .chart-lbl{font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--mu);margin-bottom:8px}
@@ -124,7 +124,7 @@ nav{background:var(--s1);border-bottom:1px solid var(--bd);display:flex;align-it
 .meet-sub{font-size:12.5px;color:var(--mu2);margin-bottom:10px;line-height:1.45}
 .doc-list{display:flex;flex-direction:column;gap:4px}
 .doc{background:var(--s2);border:1px solid var(--bd);border-radius:5px;padding:5px 10px;font-size:12.5px;display:flex;align-items:center;gap:7px;cursor:pointer;color:var(--tx)}
-.doc:hover{border-color:var(--amber)44}
+.doc:hover{border-color:var(--blue)44}
 
 /* Scrollable wrapper for non-chat companion blocks */
 .companion-scroll{flex:1;min-height:0;overflow-y:auto;scrollbar-width:thin;scrollbar-color:var(--bd) transparent}
@@ -135,7 +135,7 @@ nav{background:var(--s1);border-bottom:1px solid var(--bd);display:flex;align-it
 .msg{max-width:93%;padding:9px 13px;font-size:13.5px;line-height:1.6;border-radius:9px}
 .msg.user{background:var(--blue);color:#fff;align-self:flex-end;border-radius:9px 9px 2px 9px}
 .msg.ai{background:var(--s2);color:var(--tx);align-self:flex-start;border-radius:9px 9px 9px 2px;border:1px solid var(--bd)}
-.msg.ai strong{color:var(--green)}
+.msg.ai strong{color:var(--blue)}
 .chat-inp{padding:11px 13px;border-top:1px solid var(--bd);display:flex;gap:6px;flex-shrink:0}
 .chat-inp input{flex:1;background:var(--s2);border:1px solid var(--bd);border-radius:7px;padding:8px 11px;color:var(--tx);font-size:13.5px;outline:none}
 .chat-inp input::placeholder{color:var(--mu)}
@@ -159,9 +159,9 @@ nav{background:var(--s1);border-bottom:1px solid var(--bd);display:flex;align-it
     <div class="sb-sec">
       <div class="sb-lbl">Your Topics</div>
       <div class="topic-item active"><div class="dot" style="background:var(--blue)"></div>AI Regulation<span class="topic-count">9</span></div>
-      <div class="topic-item"><div class="dot" style="background:var(--amber)"></div>US Economy<span class="topic-count">6</span></div>
-      <div class="topic-item"><div class="dot" style="background:var(--green)"></div>Climate &amp; ESG<span class="topic-count">4</span></div>
-      <div class="topic-item"><div class="dot" style="background:var(--purple)"></div>AI &amp; Markets<span class="topic-count">7</span></div>
+      <div class="topic-item"><div class="dot" style="background:var(--slate)"></div>US Economy<span class="topic-count">6</span></div>
+      <div class="topic-item"><div class="dot" style="background:var(--slate)"></div>Climate &amp; ESG<span class="topic-count">4</span></div>
+      <div class="topic-item"><div class="dot" style="background:var(--blue)"></div>AI &amp; Markets<span class="topic-count">7</span></div>
       <div class="topic-item"><div class="dot" style="background:var(--slate)"></div>Cybersecurity<span class="topic-count">3</span></div>
     </div>
     <div class="sb-sec" style="flex:1;overflow-y:auto">
@@ -253,29 +253,29 @@ nav{background:var(--s1);border-bottom:1px solid var(--bd);display:flex;align-it
       <div class="c-lbl cl-i">📊 Compliance Cost by Sector · €M, 2026</div>
       <div class="c-kpis">
         <div class="c-kpi">
-          <div class="c-kpi-val" style="color:var(--green)">€4.2B</div>
+          <div class="c-kpi-val" style="color:var(--tx)">€4.2B</div>
           <div class="c-kpi-lbl">Total Cost</div>
-          <div class="c-kpi-d" style="color:var(--amber)">↑ 28%</div>
+          <div class="c-kpi-d" style="color:var(--mu2)">↑ 28%</div>
         </div>
         <div class="c-kpi">
-          <div class="c-kpi-val" style="color:var(--blue)">47</div>
+          <div class="c-kpi-val" style="color:var(--tx)">47</div>
           <div class="c-kpi-lbl">High-Risk Cats.</div>
-          <div class="c-kpi-d" style="color:var(--amber)">↑ 12</div>
+          <div class="c-kpi-d" style="color:var(--mu2)">↑ 12</div>
         </div>
         <div class="c-kpi">
-          <div class="c-kpi-val" style="color:var(--purple)">231</div>
+          <div class="c-kpi-val" style="color:var(--tx)">231</div>
           <div class="c-kpi-lbl">Days to Enforce</div>
-          <div class="c-kpi-d" style="color:var(--slate)">Jan 2026</div>
+          <div class="c-kpi-d" style="color:var(--mu2)">Jan 2026</div>
         </div>
       </div>
       <svg viewBox="0 0 248 188" width="100%" height="118" style="display:block">
         <defs>
-          <linearGradient id="g2G" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#3ec97a"/><stop offset="100%" stop-color="#2aaa64" stop-opacity=".8"/></linearGradient>
-          <linearGradient id="g2B" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#4f8ef7"/><stop offset="100%" stop-color="#3a7ae0" stop-opacity=".8"/></linearGradient>
-          <linearGradient id="g2P" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#e879f9"/><stop offset="100%" stop-color="#cc60e0" stop-opacity=".8"/></linearGradient>
-          <linearGradient id="g2V" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#9d6ef7"/><stop offset="100%" stop-color="#8255e0" stop-opacity=".8"/></linearGradient>
-          <linearGradient id="g2A" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#f0aa2f"/><stop offset="100%" stop-color="#d8922a" stop-opacity=".8"/></linearGradient>
-          <linearGradient id="g2S" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#6e7f96"/><stop offset="100%" stop-color="#5a6a80" stop-opacity=".8"/></linearGradient>
+          <linearGradient id="g2G" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#4f8ef7"/><stop offset="100%" stop-color="#2a4a7a" stop-opacity=".8"/></linearGradient>
+          <linearGradient id="g2B" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#4f8ef7"/><stop offset="100%" stop-color="#2a4a7a" stop-opacity=".8"/></linearGradient>
+          <linearGradient id="g2P" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#4f8ef7"/><stop offset="100%" stop-color="#2a4a7a" stop-opacity=".8"/></linearGradient>
+          <linearGradient id="g2V" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#4f8ef7"/><stop offset="100%" stop-color="#2a4a7a" stop-opacity=".8"/></linearGradient>
+          <linearGradient id="g2A" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#4f8ef7"/><stop offset="100%" stop-color="#2a4a7a" stop-opacity=".8"/></linearGradient>
+          <linearGradient id="g2S" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#4f8ef7"/><stop offset="100%" stop-color="#2a4a7a" stop-opacity=".8"/></linearGradient>
         </defs>
         <!-- gridlines -->
         <line x1="78" y1="0" x2="78" y2="172" stroke="#1e2438" stroke-width="1"/>
@@ -292,7 +292,7 @@ nav{background:var(--s1);border-bottom:1px solid var(--bd);display:flex;align-it
         <text x="74" y="21" text-anchor="end" fill="#8090b0" font-size="13" font-family="system-ui">Healthcare</text>
         <rect x="78" y="8" width="136" height="19" rx="2" fill="url(#g2G)"/>
         <line x1="79" y1="9" x2="213" y2="9" stroke="rgba(255,255,255,.15)" stroke-width="1"/>
-        <text x="218" y="22" fill="#3ec97a" font-size="12.5" font-weight="700" font-family="system-ui">€820M</text>
+        <text x="218" y="22" fill="#4f8ef7" font-size="12.5" font-weight="700" font-family="system-ui">€820M</text>
         <text x="74" y="49" text-anchor="end" fill="#8090b0" font-size="13" font-family="system-ui">Financial</text>
         <rect x="78" y="36" width="106" height="19" rx="2" fill="url(#g2B)"/>
         <line x1="79" y1="37" x2="183" y2="37" stroke="rgba(255,255,255,.15)" stroke-width="1"/>
@@ -300,19 +300,19 @@ nav{background:var(--s1);border-bottom:1px solid var(--bd);display:flex;align-it
         <text x="74" y="77" text-anchor="end" fill="#8090b0" font-size="13" font-family="system-ui">Other</text>
         <rect x="78" y="64" width="91" height="19" rx="2" fill="url(#g2P)"/>
         <line x1="79" y1="65" x2="168" y2="65" stroke="rgba(255,255,255,.15)" stroke-width="1"/>
-        <text x="173" y="78" fill="#e879f9" font-size="12.5" font-weight="700" font-family="system-ui">€550M</text>
+        <text x="173" y="78" fill="#4f8ef7" font-size="12.5" font-weight="700" font-family="system-ui">€550M</text>
         <text x="74" y="105" text-anchor="end" fill="#8090b0" font-size="13" font-family="system-ui">Transport</text>
         <rect x="78" y="92" width="86" height="19" rx="2" fill="url(#g2V)"/>
         <line x1="79" y1="93" x2="163" y2="93" stroke="rgba(255,255,255,.15)" stroke-width="1"/>
-        <text x="168" y="106" fill="#9d6ef7" font-size="12.5" font-weight="700" font-family="system-ui">€520M</text>
+        <text x="168" y="106" fill="#4f8ef7" font-size="12.5" font-weight="700" font-family="system-ui">€520M</text>
         <text x="74" y="133" text-anchor="end" fill="#8090b0" font-size="13" font-family="system-ui">Manufact.</text>
         <rect x="78" y="120" width="63" height="19" rx="2" fill="url(#g2A)"/>
         <line x1="79" y1="121" x2="140" y2="121" stroke="rgba(255,255,255,.15)" stroke-width="1"/>
-        <text x="145" y="134" fill="#f0aa2f" font-size="12.5" font-weight="700" font-family="system-ui">€380M</text>
+        <text x="145" y="134" fill="#4f8ef7" font-size="12.5" font-weight="700" font-family="system-ui">€380M</text>
         <text x="74" y="161" text-anchor="end" fill="#8090b0" font-size="13" font-family="system-ui">Retail</text>
         <rect x="78" y="148" width="48" height="19" rx="2" fill="url(#g2S)"/>
         <line x1="79" y1="149" x2="125" y2="149" stroke="rgba(255,255,255,.15)" stroke-width="1"/>
-        <text x="130" y="162" fill="#7a8da8" font-size="12.5" font-weight="700" font-family="system-ui">€290M</text>
+        <text x="130" y="162" fill="#4f8ef7" font-size="12.5" font-weight="700" font-family="system-ui">€290M</text>
       </svg>
     </div>
 
@@ -362,8 +362,8 @@ nav{background:var(--s1);border-bottom:1px solid var(--bd);display:flex;align-it
 
     <div class="c-block">
       <div class="c-lbl cl-n">📰 Related News</div>
-      <div class="c-ni"><div class="imp-dot" style="background:#f87171"></div><p>FTC reviewing GPT-4o training data practices</p><span class="ns">Reuters<br>2h</span></div>
-      <div class="c-ni"><div class="imp-dot" style="background:var(--amber)"></div><p>China restricts AI exports above 100B params</p><span class="ns">FT<br>4h</span></div>
+      <div class="c-ni"><div class="imp-dot" style="background:var(--slate)"></div><p>FTC reviewing GPT-4o training data practices</p><span class="ns">Reuters<br>2h</span></div>
+      <div class="c-ni"><div class="imp-dot" style="background:var(--slate)"></div><p>China restricts AI exports above 100B params</p><span class="ns">FT<br>4h</span></div>
       <div class="c-ni"><div class="imp-dot" style="background:var(--slate)"></div><p>UK AI Safety Institute expands to 120 staff</p><span class="ns">BBC<br>6h</span></div>
     </div>
 

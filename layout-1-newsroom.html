@@ -8,7 +8,7 @@
 :root{
   --bg:#0c0f1a;--s1:#111520;--s2:#181d2e;--s3:#1e2438;--bd:#262d42;
   --tx:#eaf0ff;--mu:#566080;--mu2:#8090b0;
-  --blue:#4f8ef7;--purple:#9d6ef7;--green:#3ec97a;--amber:#f0aa2f;--slate:#7a8da8;--pink:#e879f9;
+  --blue:#4f8ef7;--purple:#4f8ef7;--green:#6b85b0;--amber:#8090a8;--slate:#7a8da8;--pink:#4f8ef7;
 }
 *{box-sizing:border-box;margin:0;padding:0}
 body{background:var(--bd);color:var(--tx);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;height:100vh;overflow:hidden;display:flex;flex-direction:column;-webkit-font-smoothing:antialiased}
@@ -21,15 +21,15 @@ nav{height:52px;background:var(--bg);border-bottom:1px solid var(--bd);display:f
 .n-tab{padding:0 20px;font-size:13px;font-weight:600;color:var(--mu2);display:flex;align-items:center;border-right:1px solid var(--bd);border-bottom:2px solid transparent;cursor:pointer;white-space:nowrap}
 .n-tab.active{color:var(--tx);border-bottom-color:var(--blue);background:var(--s1)}
 .n-right{padding:0 16px;font-size:12px;color:var(--mu2);border-left:1px solid var(--bd);height:100%;display:flex;align-items:center;gap:16px;margin-left:auto;flex-shrink:0}
-.n-live{display:flex;align-items:center;gap:6px;font-size:12px;color:var(--green);font-weight:600}
-.n-live-dot{width:6px;height:6px;border-radius:50%;background:var(--green);animation:blink 2s ease-in-out infinite}
+.n-live{display:flex;align-items:center;gap:6px;font-size:12px;color:var(--blue);font-weight:600}
+.n-live-dot{width:6px;height:6px;border-radius:50%;background:var(--blue);animation:blink 2s ease-in-out infinite}
 @keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
 
 /* ── TYPE TAGS ── */
 .tag{display:inline-flex;align-items:center;gap:4px;font-size:10.5px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;padding:3px 8px;border-radius:4px;margin-bottom:10px}
-.tb{background:#1a2d4a;color:var(--blue)}.tp{background:#261a42;color:var(--purple)}
-.tn{background:var(--s3);color:var(--slate)}.ti{background:#0e2a1c;color:var(--green)}
-.tm{background:#2d2008;color:var(--amber)}.tag.sm{font-size:9.5px;padding:2px 6px;margin-bottom:5px}
+.tb{background:#1a2d4a;color:var(--blue)}.tp{background:var(--s3);color:var(--mu2)}
+.tn{background:var(--s3);color:var(--mu2)}.ti{background:var(--s3);color:var(--mu2)}
+.tm{background:var(--s3);color:var(--mu2)}.tag.sm{font-size:9.5px;padding:2px 6px;margin-bottom:5px}
 
 /* ── HERO GRID ── */
 .hero{flex:1;min-height:0;display:grid;grid-template-columns:1fr 340px 220px;grid-template-rows:1fr 1fr;gap:1px;background:var(--bd)}
@@ -49,7 +49,7 @@ nav{height:52px;background:var(--bg);border-bottom:1px solid var(--bd);display:f
 .chart-eyebrow{font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--mu2);margin-bottom:8px}
 
 .h-footer{margin-top:10px;font-size:11px;color:var(--mu);padding-top:10px;border-top:1px solid var(--bd);display:flex;justify-content:space-between;align-items:center}
-.total-chip{background:var(--s2);border:1px solid var(--green)44;border-radius:6px;padding:4px 10px;font-size:11px;font-weight:800;color:var(--green)}
+.total-chip{background:var(--s2);border:1px solid var(--blue)44;border-radius:6px;padding:4px 10px;font-size:11px;font-weight:800;color:var(--blue)}
 
 /* ── BRIEF ── */
 .h-brief{padding:20px}
@@ -66,9 +66,9 @@ nav{height:52px;background:var(--bg);border-bottom:1px solid var(--bd);display:f
 .h-pod h4{font-size:14px;font-weight:700;margin-bottom:4px;line-height:1.4;letter-spacing:-.1px}
 .ep{font-size:12px;color:var(--mu2);margin-bottom:10px;line-height:1.5}
 .player{background:var(--s2);border-radius:8px;padding:10px 13px;display:flex;align-items:center;gap:10px;margin-bottom:10px}
-.play{width:30px;height:30px;border-radius:50%;background:var(--purple);display:flex;align-items:center;justify-content:center;font-size:9px;flex-shrink:0;cursor:pointer}
-.wave{flex:1;height:18px;background:repeating-linear-gradient(90deg,#9d6ef720 0,#9d6ef720 2px,transparent 2px,transparent 5px);border-radius:2px;position:relative;overflow:hidden}
-.wave-fill{position:absolute;inset:0;width:30%;background:repeating-linear-gradient(90deg,var(--purple) 0,var(--purple) 2px,transparent 2px,transparent 5px)}
+.play{width:30px;height:30px;border-radius:50%;background:var(--blue);display:flex;align-items:center;justify-content:center;font-size:9px;flex-shrink:0;cursor:pointer}
+.wave{flex:1;height:18px;background:repeating-linear-gradient(90deg,#4f8ef720 0,#4f8ef720 2px,transparent 2px,transparent 5px);border-radius:2px;position:relative;overflow:hidden}
+.wave-fill{position:absolute;inset:0;width:30%;background:repeating-linear-gradient(90deg,var(--blue) 0,var(--blue) 2px,transparent 2px,transparent 5px)}
 .pt{font-size:11px;color:var(--mu2);flex-shrink:0}
 .chapters{display:flex;flex-direction:column;gap:6px}
 .ch{display:flex;align-items:flex-start;gap:8px;font-size:12px;color:var(--mu2);line-height:1.4}
@@ -83,8 +83,8 @@ nav{height:52px;background:var(--bg);border-bottom:1px solid var(--bd);display:f
 .ni-meta{display:flex;gap:8px;align-items:center}
 .ni span{font-size:11px;color:var(--mu2)}
 .ni-impact{font-size:9.5px;padding:2px 6px;border-radius:4px;font-weight:700}
-.imp-high{background:#2d0808;color:#f87171}
-.imp-med{background:#2d1a08;color:var(--amber)}
+.imp-high{background:var(--s3);color:var(--mu2)}
+.imp-med{background:var(--s3);color:var(--mu2)}
 
 /* ── MEETING ── */
 .h-meet{padding:20px}
@@ -106,7 +106,7 @@ nav{height:52px;background:var(--bg);border-bottom:1px solid var(--bd);display:f
 .chat-float{position:fixed;bottom:20px;right:20px;width:340px;background:var(--s1);border:1px solid var(--bd);border-radius:14px;overflow:hidden;box-shadow:0 20px 56px rgba(0,0,0,.72);z-index:200;display:flex;flex-direction:column}
 .chat-hd{background:var(--s2);padding:12px 16px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--bd);flex-shrink:0}
 .chat-hd-l{display:flex;align-items:center;gap:9px}
-.live-dot{width:8px;height:8px;border-radius:50%;background:var(--green);flex-shrink:0;animation:blink 2s ease-in-out infinite}
+.live-dot{width:8px;height:8px;border-radius:50%;background:var(--blue);flex-shrink:0;animation:blink 2s ease-in-out infinite}
 .chat-name{font-size:14px;font-weight:700}
 .chat-ctx{font-size:11px;color:var(--mu2);margin-top:1px}
 .chat-min{font-size:18px;color:var(--mu2);cursor:pointer;line-height:1}
@@ -114,7 +114,7 @@ nav{height:52px;background:var(--bg);border-bottom:1px solid var(--bd);display:f
 .msg{max-width:90%;padding:10px 13px;font-size:13px;line-height:1.6;border-radius:11px}
 .msg.user{background:var(--blue);color:#fff;align-self:flex-end;border-radius:11px 11px 3px 11px}
 .msg.ai{background:var(--s2);color:var(--tx);align-self:flex-start;border-radius:11px 11px 11px 3px;border:1px solid var(--bd)}
-.msg.ai strong{color:var(--green)}
+.msg.ai strong{color:var(--blue)}
 .chat-inp{padding:11px 14px;border-top:1px solid var(--bd);display:flex;gap:8px;flex-shrink:0}
 .chat-inp input{flex:1;background:var(--s2);border:1px solid var(--bd);border-radius:8px;padding:9px 12px;color:var(--tx);font-size:13px;outline:none}
 .chat-inp input::placeholder{color:var(--mu)}
@@ -149,12 +149,12 @@ nav{height:52px;background:var(--bg);border-bottom:1px solid var(--bd);display:f
       <div class="kpi">
         <div class="kpi-val" style="color:var(--green)">€4.2B</div>
         <div class="kpi-lbl">Total EU Compliance Cost</div>
-        <div class="kpi-delta" style="color:var(--amber)">↑ 28% vs 2024</div>
+        <div class="kpi-delta" style="color:var(--mu2)">↑ 28% vs 2024</div>
       </div>
       <div class="kpi">
         <div class="kpi-val" style="color:var(--blue)">47</div>
         <div class="kpi-lbl">High-Risk AI Categories</div>
-        <div class="kpi-delta" style="color:var(--amber)">↑ 12 from draft</div>
+        <div class="kpi-delta" style="color:var(--mu2)">↑ 12 from draft</div>
       </div>
       <div class="kpi">
         <div class="kpi-val" style="color:var(--purple)">231</div>
@@ -168,12 +168,12 @@ nav{height:52px;background:var(--bg);border-bottom:1px solid var(--bd);display:f
     <!-- SVG scales to ~1.6× in this container — font-size here renders ~1.6× larger in browser -->
     <svg viewBox="0 0 520 232" width="100%" style="display:block;flex:1;min-height:0">
       <defs>
-        <linearGradient id="gG" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#3ec97a"/><stop offset="100%" stop-color="#27a660" stop-opacity=".85"/></linearGradient>
+        <linearGradient id="gG" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#4f8ef7"/><stop offset="100%" stop-color="#3478e0" stop-opacity=".85"/></linearGradient>
         <linearGradient id="gB" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#4f8ef7"/><stop offset="100%" stop-color="#3478e0" stop-opacity=".85"/></linearGradient>
-        <linearGradient id="gPk" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#e879f9"/><stop offset="100%" stop-color="#c660de" stop-opacity=".85"/></linearGradient>
-        <linearGradient id="gV" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#9d6ef7"/><stop offset="100%" stop-color="#8050e4" stop-opacity=".85"/></linearGradient>
-        <linearGradient id="gA" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#f0aa2f"/><stop offset="100%" stop-color="#d4901a" stop-opacity=".85"/></linearGradient>
-        <linearGradient id="gS" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#7a8da8"/><stop offset="100%" stop-color="#607286" stop-opacity=".85"/></linearGradient>
+        <linearGradient id="gPk" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#2a4a7a"/><stop offset="100%" stop-color="#1e3a6a" stop-opacity=".85"/></linearGradient>
+        <linearGradient id="gV" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#2a4a7a"/><stop offset="100%" stop-color="#1e3a6a" stop-opacity=".85"/></linearGradient>
+        <linearGradient id="gA" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#3a5ea0"/><stop offset="100%" stop-color="#2a4a7a" stop-opacity=".85"/></linearGradient>
+        <linearGradient id="gS" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#2a3d58"/><stop offset="100%" stop-color="#1e2d42" stop-opacity=".85"/></linearGradient>
       </defs>
 
       <!-- Vertical gridlines -->
@@ -195,8 +195,8 @@ nav{height:52px;background:var(--bg);border-bottom:1px solid var(--bd);display:f
       <text x="143" y="23" text-anchor="end" fill="#8090b0" font-size="11" font-family="system-ui,sans-serif">Healthcare AI</text>
       <rect x="148" y="8" width="195" height="24" rx="4" fill="url(#gG)"/>
       <line x1="149" y1="9" x2="342" y2="9" stroke="rgba(255,255,255,.15)" stroke-width="1.5"/>
-      <text x="349" y="24" fill="#3ec97a" font-size="11.5" font-weight="700" font-family="system-ui,sans-serif">€820M</text>
-      <text x="418" y="24" fill="#3a7a50" font-size="10" font-family="system-ui,sans-serif">↑ 34% YoY</text>
+      <text x="349" y="24" fill="#4f8ef7" font-size="11.5" font-weight="700" font-family="system-ui,sans-serif">€820M</text>
+      <text x="418" y="24" fill="#3a5ea0" font-size="10" font-family="system-ui,sans-serif">↑ 34% YoY</text>
 
       <!-- ROW 2: Financial €640M → 152px -->
       <text x="143" y="58" text-anchor="end" fill="#8090b0" font-size="11" font-family="system-ui,sans-serif">Financial Svcs</text>
@@ -209,22 +209,22 @@ nav{height:52px;background:var(--bg);border-bottom:1px solid var(--bd);display:f
       <text x="143" y="93" text-anchor="end" fill="#8090b0" font-size="11" font-family="system-ui,sans-serif">Other Sectors</text>
       <rect x="148" y="78" width="131" height="24" rx="4" fill="url(#gPk)"/>
       <line x1="149" y1="79" x2="278" y2="79" stroke="rgba(255,255,255,.15)" stroke-width="1.5"/>
-      <text x="285" y="94" fill="#e879f9" font-size="11.5" font-weight="700" font-family="system-ui,sans-serif">€550M</text>
-      <text x="418" y="94" fill="#8a4a98" font-size="10" font-family="system-ui,sans-serif">↑ 18% YoY</text>
+      <text x="285" y="94" fill="#7a8da8" font-size="11.5" font-weight="700" font-family="system-ui,sans-serif">€550M</text>
+      <text x="418" y="94" fill="#4a5a70" font-size="10" font-family="system-ui,sans-serif">↑ 18% YoY</text>
 
       <!-- ROW 4: Transportation €520M → 124px -->
       <text x="143" y="128" text-anchor="end" fill="#8090b0" font-size="11" font-family="system-ui,sans-serif">Transportation</text>
       <rect x="148" y="113" width="124" height="24" rx="4" fill="url(#gV)"/>
       <line x1="149" y1="114" x2="271" y2="114" stroke="rgba(255,255,255,.15)" stroke-width="1.5"/>
-      <text x="278" y="129" fill="#9d6ef7" font-size="11.5" font-weight="700" font-family="system-ui,sans-serif">€520M</text>
-      <text x="418" y="129" fill="#6a48b8" font-size="10" font-family="system-ui,sans-serif">↑ 41% YoY</text>
+      <text x="278" y="129" fill="#7a8da8" font-size="11.5" font-weight="700" font-family="system-ui,sans-serif">€520M</text>
+      <text x="418" y="129" fill="#4a5a70" font-size="10" font-family="system-ui,sans-serif">↑ 41% YoY</text>
 
       <!-- ROW 5: Manufacturing €380M → 90px -->
       <text x="143" y="163" text-anchor="end" fill="#8090b0" font-size="11" font-family="system-ui,sans-serif">Manufacturing</text>
       <rect x="148" y="148" width="90" height="24" rx="4" fill="url(#gA)"/>
       <line x1="149" y1="149" x2="237" y2="149" stroke="rgba(255,255,255,.15)" stroke-width="1.5"/>
-      <text x="244" y="164" fill="#f0aa2f" font-size="11.5" font-weight="700" font-family="system-ui,sans-serif">€380M</text>
-      <text x="418" y="164" fill="#9a6a20" font-size="10" font-family="system-ui,sans-serif">↑ 22% YoY</text>
+      <text x="244" y="164" fill="#7a8da8" font-size="11.5" font-weight="700" font-family="system-ui,sans-serif">€380M</text>
+      <text x="418" y="164" fill="#4a5a70" font-size="10" font-family="system-ui,sans-serif">↑ 22% YoY</text>
 
       <!-- ROW 6: Retail €290M → 69px -->
       <text x="143" y="198" text-anchor="end" fill="#8090b0" font-size="11" font-family="system-ui,sans-serif">Retail &amp; Comm.</text>
