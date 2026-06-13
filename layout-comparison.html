@@ -10,47 +10,57 @@
 
   .page{max-width:860px;margin:0 auto;padding:56px 40px 80px}
 
-  /* Header */
   .doc-label{font-size:11px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:#6e7f96;margin-bottom:18px}
   h1{font-size:28px;font-weight:800;line-height:1.25;letter-spacing:-.4px;color:#0f1421;margin-bottom:8px}
   .subtitle{font-size:15px;color:#6e7f96;margin-bottom:40px}
 
   hr{border:none;border-top:1px solid #e2e6f0;margin:36px 0}
 
-  /* Sections */
-  h2{font-size:13px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:#6e7f96;margin-bottom:14px}
+  h2{font-size:11px;font-weight:800;letter-spacing:.13em;text-transform:uppercase;color:#6e7f96;margin-bottom:14px}
   h3{font-size:17px;font-weight:700;letter-spacing:-.2px;color:#0f1421;margin-bottom:6px}
-
   p{color:#2c3548;margin-bottom:0}
 
   .section{margin-bottom:36px}
 
-  /* Problem block */
+  /* Problem */
   .problem-box{background:#fff;border:1px solid #e2e6f0;border-left:3px solid #f0aa2f;border-radius:8px;padding:18px 22px}
   .problem-box p{font-size:15px;line-height:1.7;color:#2c3548}
   .problem-box strong{color:#0f1421}
 
-  /* Inspiration */
+  /* How it works */
+  .how-row{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:4px}
+  .how-card{background:#fff;border:1px solid #e2e6f0;border-radius:8px;padding:14px 16px}
+  .how-card .hc-icon{font-size:18px;margin-bottom:6px}
+  .how-card h4{font-size:13.5px;font-weight:700;color:#0f1421;margin-bottom:4px}
+  .how-card p{font-size:12.5px;color:#6e7f96;line-height:1.5}
+
+  /* Why 3 layouts */
   .inspo-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:4px}
   .inspo-card{background:#fff;border:1px solid #e2e6f0;border-radius:8px;padding:16px 18px}
   .inspo-card .ic-num{font-size:11px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:#9d6ef7;margin-bottom:6px}
   .inspo-card h4{font-size:14px;font-weight:700;color:#0f1421;margin-bottom:5px}
   .inspo-card p{font-size:13px;color:#6e7f96;line-height:1.5}
+  .inspo-card .ic-fit{font-size:11.5px;color:#3ec97a;font-weight:600;margin-top:8px}
 
-  /* References */
-  .ref-row{display:flex;flex-wrap:wrap;gap:8px;margin-top:4px}
-  .ref-chip{background:#fff;border:1px solid #e2e6f0;border-radius:20px;padding:5px 14px;font-size:13px;color:#2c3548;font-weight:500}
-  .ref-chip span{color:#9d6ef7;font-weight:700;margin-right:5px}
+  /* Comparison table */
+  .comp-table{width:100%;border-collapse:collapse;margin-top:4px}
+  .comp-table th{font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:#6e7f96;padding:8px 12px;text-align:left;border-bottom:2px solid #e2e6f0}
+  .comp-table td{font-size:13px;color:#2c3548;padding:9px 12px;border-bottom:1px solid #f0f2f8;vertical-align:top;line-height:1.5}
+  .comp-table tr:last-child td{border-bottom:none}
+  .comp-table td:first-child{color:#0f1421;font-weight:600}
+  .comp-table td .dim{color:#9099b0;font-size:12px}
+  .win{color:#3ec97a;font-weight:600}
 
   /* Layout cards */
   .layout-card{background:#fff;border:1px solid #e2e6f0;border-radius:10px;padding:24px 26px;margin-bottom:16px}
-  .lc-header{display:flex;align-items:baseline;gap:12px;margin-bottom:14px}
+  .lc-header{display:flex;align-items:baseline;gap:12px;margin-bottom:10px}
   .lc-badge{font-size:10.5px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;border-radius:4px;padding:3px 9px}
   .badge-1{background:#1a2a4a;color:#4f8ef7}
   .badge-2{background:#1a2333;color:#9d6ef7}
   .badge-3{background:#122a1e;color:#3ec97a}
   .lc-header h3{flex:1}
-
+  .lc-usecase{font-size:12.5px;font-weight:600;color:#9d6ef7;background:#9d6ef710;border-radius:4px;padding:4px 10px;margin-bottom:12px;display:inline-block}
+  .lc-desc{font-size:14px;color:#4a5a78;margin-bottom:14px;line-height:1.6;padding-bottom:14px;border-bottom:1px solid #e2e6f0}
   .lc-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:4px}
   .lc-col h4{font-size:11px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;margin-bottom:8px}
   .col-pos h4{color:#3ec97a}
@@ -61,21 +71,25 @@
   .col-pos ul li::before{content:'✓';color:#3ec97a}
   .col-neg ul li::before{content:'△';color:#f87171}
 
-  .lc-desc{font-size:14px;color:#4a5a78;margin-bottom:14px;line-height:1.6;padding-bottom:14px;border-bottom:1px solid #e2e6f0}
+  /* Preview links */
+  .preview-links{display:flex;gap:10px;margin-top:14px;padding-top:14px;border-top:1px solid #f0f2f8}
+  .prev-link{font-size:12.5px;font-weight:600;padding:5px 13px;border-radius:5px;text-decoration:none;border:1px solid #e2e6f0;color:#4a5a78}
+  .prev-link:hover{border-color:#9d6ef7;color:#9d6ef7}
+
+  /* Q&A preempt */
+  .qa-list{display:flex;flex-direction:column;gap:14px;margin-top:4px}
+  .qa{background:#fff;border:1px solid #e2e6f0;border-radius:8px;padding:16px 18px}
+  .qa-q{font-size:14px;font-weight:700;color:#0f1421;margin-bottom:5px}
+  .qa-a{font-size:13.5px;color:#4a5a78;line-height:1.6}
 
   /* Recommendation */
   .rec-box{background:#0f1421;border-radius:10px;padding:22px 26px;color:#eaf0ff}
   .rec-box h2{color:#6e7f96;margin-bottom:12px}
   .rec-box p{color:#b0c0dc;font-size:14px;line-height:1.7}
   .rec-box strong{color:#eaf0ff}
+  .rec-badge{display:inline-block;background:#9d6ef730;border:1px solid #9d6ef760;color:#c89ef7;font-size:11px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;border-radius:4px;padding:2px 8px;margin-bottom:10px}
 
-  /* Footer */
   .footer{margin-top:48px;font-size:12px;color:#9099b0;border-top:1px solid #e2e6f0;padding-top:20px}
-
-  /* Preview links */
-  .preview-links{display:flex;gap:10px;margin-top:12px}
-  .prev-link{font-size:12.5px;font-weight:600;padding:5px 13px;border-radius:5px;text-decoration:none;border:1px solid #e2e6f0;color:#4a5a78}
-  .prev-link:hover{border-color:#9d6ef7;color:#9d6ef7}
 </style>
 </head>
 <body>
@@ -83,7 +97,7 @@
 
   <div class="doc-label">Briefd · Design Review · Jun 2025</div>
   <h1>Homepage Layout Options</h1>
-  <p class="subtitle">Evaluating 3 approaches for executive content consumption · For CIO/CTO audience</p>
+  <p class="subtitle">3 approaches for executive content consumption · CIO/CTO review</p>
 
   <hr>
 
@@ -91,55 +105,99 @@
   <div class="section">
     <h2>The Problem</h2>
     <div class="problem-box">
-      <p>Executives spend significant time switching between sources to stay current. <strong>Briefd needs one home screen</strong> that consolidates briefs, meeting materials, podcasts, recent news, and infographics — and lets a CIO scan it in under 3 minutes without losing depth when they need it. The tension: information density vs. cognitive overload. Wrong call either way means the product gets abandoned.</p>
+      <p>Executives spend significant time switching between sources to stay current — email newsletters, Slack threads, Google News, analyst portals, pre-read decks. <strong>None of it is connected.</strong> A CIO preparing for a board meeting on AI regulation shouldn't have to stitch together a Reuters article, a legal memo, a podcast, and a briefing deck from four different tabs. Briefd's home screen is the single surface that replaces that switching — delivering briefs, meeting materials, podcasts, recent news, and infographics in one view, prioritized by what's relevant <em>this week</em>.</p>
     </div>
   </div>
 
   <hr>
 
-  <!-- INSPIRATION -->
+  <!-- HOW IT WORKS -->
+  <div class="section">
+    <h2>How Briefd Works</h2>
+    <div class="how-row">
+      <div class="how-card">
+        <div class="hc-icon">🎯</div>
+        <h4>Topic-based</h4>
+        <p>You follow topics (AI Regulation, ESG, Cybersecurity). Everything surfaced is filtered to what matters for your role.</p>
+      </div>
+      <div class="how-card">
+        <div class="hc-icon">🤖</div>
+        <h4>AI-synthesized</h4>
+        <p>Briefs are generated from primary sources — legislation, analyst reports, news wires. The chat answers questions against those sources.</p>
+      </div>
+      <div class="how-card">
+        <div class="hc-icon">📅</div>
+        <h4>Meeting-aware</h4>
+        <p>Connects to your calendar. Pre-reads and agendas surface automatically before relevant meetings.</p>
+      </div>
+    </div>
+  </div>
+
+  <hr>
+
+  <!-- WHY 3 LAYOUTS -->
   <div class="section">
     <h2>Why These 3 Layouts</h2>
+    <p style="font-size:13.5px;color:#4a5a78;margin-bottom:14px">Each layout reflects a different mode a CIO uses — ambient awareness, deep-dive prep, or scheduled catch-up. We're testing which mode maps most naturally to how CIOs actually open the app.</p>
     <div class="inspo-grid">
       <div class="inspo-card">
         <div class="ic-num">Option 1</div>
         <h4>The Newsroom</h4>
-        <p>Inspired by how financial desks work — many signals visible at once, hierarchy set by editorial weight. Suits CIOs who want ambient awareness.</p>
+        <p>Inspired by Bloomberg and financial desks — many signals visible simultaneously, editorial hierarchy drives priority.</p>
+        <p class="ic-fit">Best fit: Morning scan, ambient awareness</p>
       </div>
       <div class="inspo-card">
         <div class="ic-num">Option 2</div>
         <h4>The Briefing Room</h4>
-        <p>Mirrors how senior staff prepare principals — one deep topic with context rail. Suits CIOs who open Briefd before a specific meeting or decision.</p>
+        <p>Mirrors how senior staff prepare principals — one deep topic, full context rail. Like a Notion doc with live data attached.</p>
+        <p class="ic-fit">Best fit: Pre-meeting or pre-board prep</p>
       </div>
       <div class="inspo-card">
         <div class="ic-num">Option 3</div>
         <h4>The Feed</h4>
-        <p>Familiar scroll-and-scan from tools execs already use daily. Lowest switching cost. Suits CIOs who want to graze across topics on a schedule.</p>
+        <p>Familiar scroll-and-scan from tools execs already use daily (LinkedIn, Feedly). Lowest adoption friction.</p>
+        <p class="ic-fit">Best fit: Commute, scheduled daily catch-up</p>
       </div>
     </div>
   </div>
 
   <hr>
 
-  <!-- REFERENCE SITES -->
+  <!-- HOW IT DIFFERS -->
   <div class="section">
-    <h2>Similar Products</h2>
-    <div class="ref-row">
-      <div class="ref-chip"><span>L1</span>Bloomberg Terminal</div>
-      <div class="ref-chip"><span>L1</span>Axios Pro</div>
-      <div class="ref-chip"><span>L1</span>Financial Times</div>
-      <div class="ref-chip"><span>L2</span>Notion AI</div>
-      <div class="ref-chip"><span>L2</span>Perplexity</div>
-      <div class="ref-chip"><span>L2</span>Sift (exec briefing)</div>
-      <div class="ref-chip"><span>L3</span>Feedly</div>
-      <div class="ref-chip"><span>L3</span>LinkedIn Feed</div>
-      <div class="ref-chip"><span>L3</span>Morning Brew</div>
-    </div>
+    <h2>How This Compares to What You Already Use</h2>
+    <table class="comp-table">
+      <tr>
+        <th>Tool</th>
+        <th>What it does well</th>
+        <th>What Briefd adds</th>
+      </tr>
+      <tr>
+        <td>Bloomberg / Reuters</td>
+        <td>Real-time market and news data</td>
+        <td>Synthesized exec brief + meeting context — no raw data parsing</td>
+      </tr>
+      <tr>
+        <td>LinkedIn / Morning Brew</td>
+        <td>Broad awareness, social signal</td>
+        <td>Role-specific curation (CIO/CTO lens, not general audience)</td>
+      </tr>
+      <tr>
+        <td>Notion / Confluence</td>
+        <td>Internal docs and planning</td>
+        <td>Live external intelligence alongside internal meeting prep</td>
+      </tr>
+      <tr>
+        <td>Email newsletters</td>
+        <td>Curated summaries delivered passively</td>
+        <td class="win">Briefd: interactive, queryable, connected to your calendar</td>
+      </tr>
+    </table>
   </div>
 
   <hr>
 
-  <!-- LAYOUT CARDS -->
+  <!-- LAYOUT EVALUATION -->
   <div class="section">
     <h2>Layout Evaluation</h2>
 
@@ -149,22 +207,23 @@
         <div class="lc-badge badge-1">Layout 1</div>
         <h3>Newsroom — Multi-panel dashboard</h3>
       </div>
-      <p class="lc-desc">Hero story left, KPI ticker center, podcast + chat right. Modeled on how a newsroom editor sees the day — all signals visible simultaneously, no click required to assess the landscape.</p>
+      <div class="lc-usecase">When to use: opening the app for a quick morning scan</div>
+      <p class="lc-desc">Hero story left, live KPI ticker center, podcast + AI chat right. Everything visible at once — no navigation required to assess the day's landscape. Modeled on how a trading desk or newsroom editor monitors signals.</p>
       <div class="lc-grid">
         <div class="lc-col col-pos">
           <h4>Strengths</h4>
           <ul>
-            <li>Maximum information at a glance — suits ambient-awareness use case</li>
-            <li>Ticker creates urgency and movement without navigation</li>
-            <li>Strong first impression — distinctive, memorable</li>
+            <li>Maximum signal at a glance — no clicks to read the landscape</li>
+            <li>Ticker creates time-awareness without separate notifications</li>
+            <li>Strongest visual differentiation — nothing else looks like this</li>
           </ul>
         </div>
         <div class="lc-col col-neg">
           <h4>Watch</h4>
           <ul>
-            <li>Highest cognitive load — requires training to read efficiently</li>
-            <li>Fixed panels limit flexibility as content types expand</li>
-            <li>Mobile / smaller screens break the layout entirely</li>
+            <li>Highest cognitive load — takes time to learn to read efficiently</li>
+            <li>Fixed panel structure limits flexibility as content types grow</li>
+            <li>Breaks on smaller screens and laptops — desktop only</li>
           </ul>
         </div>
       </div>
@@ -179,22 +238,23 @@
         <div class="lc-badge badge-2">Layout 2</div>
         <h3>Briefing Room — Three-column document</h3>
       </div>
-      <p class="lc-desc">Topic nav left, full executive brief center, companion rail (podcast, charts, news, meeting, chat) right. Built for depth on a single topic — the pre-meeting or pre-board-session workflow.</p>
+      <div class="lc-usecase">When to use: 20 min before a board meeting or policy decision</div>
+      <p class="lc-desc">Topic nav left, full executive brief center, companion rail right (podcast, KPIs, charts, news, meeting docs, chat). Everything about one topic, in one screen. No tab switching, no assembly required.</p>
       <div class="lc-grid">
         <div class="lc-col col-pos">
           <h4>Strengths</h4>
           <ul>
-            <li>Best for decision-prep — all context for one topic in one view</li>
-            <li>Companion rail keeps chat and sources without hiding the brief</li>
-            <li>Clear information hierarchy — center anchors attention</li>
+            <li>Best for decision-prep — full context without switching tabs</li>
+            <li>Companion rail keeps sources and chat visible alongside the brief</li>
+            <li>Clear hierarchy — center brief anchors attention, rail supports</li>
           </ul>
         </div>
         <div class="lc-col col-neg">
           <h4>Watch</h4>
           <ul>
-            <li>Assumes user enters with a topic — poor for discovery or browsing</li>
-            <li>Three columns require wide screens (1200px+)</li>
-            <li>Right rail gets crowded fast as content types grow</li>
+            <li>Assumes the user enters with a specific topic — weak for browsing</li>
+            <li>Requires wide screen (1200px+) — not suited to mobile or tablet</li>
+            <li>Right rail gets crowded as content types expand over time</li>
           </ul>
         </div>
       </div>
@@ -209,22 +269,23 @@
         <div class="lc-badge badge-3">Layout 3</div>
         <h3>Feed — Scrollable cards + sticky sidebar</h3>
       </div>
-      <p class="lc-desc">Vertical card feed left (brief, podcast, infographic, news, meeting), topics + chat sidebar sticky right. Familiar pattern — same muscle memory as LinkedIn or Feedly, with executive-grade content.</p>
+      <div class="lc-usecase">When to use: daily commute, scheduled 10-min catch-up</div>
+      <p class="lc-desc">Vertical card feed (brief, podcast, infographic, news, meeting prep) with topics and AI chat pinned right. Same muscle memory as LinkedIn or Feedly — but filtered to what matters for a CIO's role.</p>
       <div class="lc-grid">
         <div class="lc-col col-pos">
           <h4>Strengths</h4>
           <ul>
-            <li>Lowest adoption friction — zero learning curve</li>
-            <li>Most extensible — add a new content type without redesigning</li>
-            <li>Works across screen sizes with minor adjustments</li>
+            <li>Zero learning curve — familiar pattern from daily tools</li>
+            <li>Most extensible — new content types slot in without redesigning</li>
+            <li>Works across screen sizes including mobile and tablet</li>
           </ul>
         </div>
         <div class="lc-col col-neg">
           <h4>Watch</h4>
           <ul>
-            <li>Feels less differentiated — risks looking like another news app</li>
-            <li>No strong visual hierarchy; importance depends on card ordering</li>
-            <li>Scroll fatigue if content volume grows unchecked</li>
+            <li>Least differentiated visually — risks looking like another news app</li>
+            <li>No fixed hierarchy — priority depends entirely on card ordering logic</li>
+            <li>Scroll fatigue risk if volume grows without strong curation</li>
           </ul>
         </div>
       </div>
@@ -236,11 +297,38 @@
 
   <hr>
 
+  <!-- ANTICIPATED QUESTIONS -->
+  <div class="section">
+    <h2>Questions You'll Likely Get</h2>
+    <div class="qa-list">
+      <div class="qa">
+        <div class="qa-q">"What is the AI doing? Is my data secure?"</div>
+        <div class="qa-a">The AI chat answers questions using only the sources surfaced in the brief — legislation text, analyst reports, verified news. It does not train on your queries. Enterprise data stays within your org's environment. No personal or proprietary data is used to generate content for other users.</div>
+      </div>
+      <div class="qa">
+        <div class="qa-q">"Who decides what I see? Can I trust the curation?"</div>
+        <div class="qa-a">Content is sourced from primary references (government filings, major wire services, tier-1 analyst firms) and filtered by your followed topics and role. No social signals, no algorithmic engagement optimization. You control the topic list; we control source quality.</div>
+      </div>
+      <div class="qa">
+        <div class="qa-q">"Does this work on my phone?"</div>
+        <div class="qa-a">Layout 3 (Feed) is fully responsive and works on mobile and tablet. Layout 2 (Briefing Room) is desktop-first by design — three columns require screen width. A mobile companion app is on the roadmap for Q4.</div>
+      </div>
+      <div class="qa">
+        <div class="qa-q">"I already have Bloomberg / LinkedIn / email newsletters — why do I need this?"</div>
+        <div class="qa-a">Those tools surface raw data or broad-audience content. Briefd surfaces a synthesized brief specific to your role and your upcoming meetings — pre-digested, queryable, and connected to your calendar. It replaces 40 min of assembly, not a data subscription.</div>
+      </div>
+    </div>
+  </div>
+
+  <hr>
+
   <!-- RECOMMENDATION -->
   <div class="rec-box">
-    <h2>Bottom Line</h2>
-    <p><strong>Layout 2 for depth, Layout 3 for scale.</strong> L2 wins for the primary use case — a CIO opening the app before a meeting needs everything about one topic in one screen. L3 is the safer long-term architecture because it tolerates growth without a redesign. L1 is the strongest visual statement but the hardest to sustain as a daily-use product.</p>
-    <p style="margin-top:10px"><strong>Suggested next step:</strong> Test L2 and L3 with 3–4 target users. Ask one question — "Where did you look first?" — and the answer will decide the direction.</p>
+    <h2>Recommendation</h2>
+    <div class="rec-badge">Our view</div>
+    <p><strong>Start with Layout 2.</strong> The primary Briefd use case is a CIO opening the app 20 minutes before a meeting — they need one topic, all context, no navigation. Layout 2 is the only option built for that moment. Layout 3 is the right long-term architecture for daily habit use and mobile, and is not mutually exclusive — it becomes the default home and Layout 2 activates when a meeting is detected on your calendar.</p>
+    <p style="margin-top:10px">Layout 1 has the strongest visual identity but the highest adoption risk. Reserve it as an advanced power-user mode.</p>
+    <p style="margin-top:10px"><strong>Suggested next step:</strong> Walk 2–3 target CIOs through L2 and L3 with one prompt — <em>"You have a board meeting in 20 minutes. Show me how you'd use this."</em> Observation beats preference surveys.</p>
   </div>
 
   <div class="footer">Briefd · Internal · Not for distribution · Jun 2025</div>
